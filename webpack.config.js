@@ -30,7 +30,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      title: '金鲜生',
+      title: 'antd-starter',
       filename: 'index.html',
       template: 'index.template.html',
       favicon: path.join(__dirname, 'src', 'assets', 'images', 'favicon.ico')
