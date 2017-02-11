@@ -6,15 +6,14 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 
   entry: {
-    bundle: [ 'babel-polyfill', './src/index.js' ],
-    vendors: ['react', 'reflux', 'react-dom', 'react-router']
+    bundle: [ 'babel-polyfill', './src/index' ],
+    vendors: ['react', 'react-dom', 'react-router']
   },
 
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[chunkhash:8].js',
     chunkFilename: "[id].chunk.[chunkhash:8].js",
-    publicPath: ''
   },
 
   plugins: [
@@ -42,7 +41,7 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.[chunkhash:8].js'),
 
     new HtmlWebpackPlugin({
-      title: 'antd-starter',
+      title: 'antd',
       filename: 'index.html',
       template: 'index.template.html',
       favicon: path.join(__dirname, 'src', 'assets', 'images', 'favicon.ico')
@@ -51,7 +50,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         loader: 'babel',
         exclude: /node_modules/,
       },
@@ -66,6 +65,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js'],
   }
 };

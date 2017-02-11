@@ -6,7 +6,6 @@ var open = require('open');
 var config = require('./webpack.config');
 var app = express();
 var compiler = webpack(config);
-var host = require('ip').address() || 'localhost';
 var port = 3001;
 
 var hostProxy = proxy({
@@ -24,22 +23,16 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
-// 通常用于加载静态资源
-app.use(express.static(__dirname + '/build'))
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + '/index.template.html')
+})
 
+// app.use('*', hostProxy);
 
-app.get('*', function (req, res) {
-  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-});
-
-app.use('*', hostProxy);
-
-app.listen(port, host, function (err) {
-  if (err) {
-    console.error(err);
-    return;
+app.listen(port, function(error) {
+  if (error) {
+    console.error(error)
+  } else {
+    console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port)
   }
-  var url = ['http://', host, ':', port ].join('');
-   //open(url);
-  console.log('Listening at ', url);
-});
+})

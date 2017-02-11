@@ -9,13 +9,14 @@ module.exports = {
   entry: [
     'babel-polyfill',
     'webpack-hot-middleware/client',
-    './src/index.js'
+    './src/index'
   ],
-  output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, './build'),
 
+  output: {
+    path: path.join(__dirname, './dist'),
+    filename: 'bundle.js',
   },
+
   plugins: [
 
     new webpack.HotModuleReplacementPlugin(),
@@ -30,10 +31,9 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      title: 'antd-starter',
+      title: 'antd',
       filename: 'index.html',
       template: 'index.template.html',
-      favicon: path.join(__dirname, 'src', 'assets', 'images', 'favicon.ico')
     })
   ],
   module: {
@@ -54,6 +54,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js'],
   }
 };
