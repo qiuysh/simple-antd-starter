@@ -1,5 +1,5 @@
 {
-  "plugins": [ "transform-runtime", "antd"],
+  "plugins": [ "transform-runtime", ["import", { "libraryName": "antd", "style": "css" }]],
   "presets": [ "es2015", "stage-0", "react" ],
   "env": {
     "development": {
