@@ -121,6 +121,16 @@
 
 }
 
+.ant-aside-logout {
+  width: 64px;
+  height: inherit;
+  line-height: 64px;
+  float: right;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+}
+
 .ant-layout-aside .ant-layout-breadcrumb {
   margin: 7px 0 -17px 24px;
 }
@@ -141,7 +151,7 @@
 
 .ant-layout-aside .ant-layout-content {
   background: #fff;
-  padding: 24px;
+  /*padding: 24px;*/
 }
 
 .ant-layout-aside .ant-layout-footer {

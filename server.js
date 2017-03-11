@@ -23,9 +23,11 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + '/index.template.html')
-})
+app.use(express.static(__dirname + '/dist'));
+
+app.get("*", function(req, res) {
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
+});
 
 // app.use('*', hostProxy);
 
