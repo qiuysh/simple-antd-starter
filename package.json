@@ -1,5 +1,5 @@
 {
-  "name": "simple-antd-starter",
+  "name": "react_System",
   "version": "1.0.0",
   "description": "react+es6+react-router+antd+webpack+redux",
   "main": "index.js",
@@ -20,12 +20,12 @@
   "homepage": "https://github.com/qiuysh/simple-antd-starter#readme",
   "dependencies": {
     "antd": "^1.11.3",
+    "axios": "^0.16.2",
     "classnames": "^2.2.5",
     "history": "^4.5.0",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
-    "react-router": "^2.4.1",
-    "whatwg-fetch": "^2.0.2"
+    "react-router": "^2.4.1"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
