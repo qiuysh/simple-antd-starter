@@ -31,7 +31,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      title: 'antd',
+      title: 'react_System',
       filename: 'index.html',
       template: 'index.template.html',
     })
@@ -42,6 +42,10 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel',
         include: path.join(__dirname, 'src')
+      },
+      {
+        test: /\.less$/,
+        loader: 'style!css!less'
       },
       {
         test: /\.css$/,

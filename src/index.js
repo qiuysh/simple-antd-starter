@@ -16,17 +16,17 @@ const routeConfig = {
             path: 'login', // 登录路由
             getComponent: (nextState, cb) => {
                 require.ensure([], (require) => {
-                    cb(null, require('./components/login'))
+                    cb(null, Login)
                 })
             }
         },
         {
             onEnter: Utils.redirectToLogin,
-            path: '/home',
+            path: 'home',
             component: App,
             childRoutes: [
                 {
-                    path: '/users',
+                    path: 'users',
                     getComponent: (nextState, cb) => {
                         require.ensure([], (require) => {
                             cb(null, require('./components/users'))
@@ -34,7 +34,7 @@ const routeConfig = {
                     }
                 },
                 {
-                    path: '/messages',
+                    path: 'messages',
                     getComponent: (nextState, cb) => {
                         require.ensure([], (require) => {
                             cb(null, require('./components/messages'))
@@ -42,7 +42,7 @@ const routeConfig = {
                     }
                 },
                 {
-                    path: '/books',
+                    path: 'books',
                     getComponent: (nextState, cb) => {
                         require.ensure([], (require) => {
                             cb(null, require('./components/books'))
@@ -50,7 +50,7 @@ const routeConfig = {
                     }
                 },
                 {
-                    path: '/system',
+                    path: 'system',
                     getComponent: (nextState, cb) => {
                         require.ensure([], (require) => {
                             cb(null, require('./components/system'))
