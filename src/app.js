@@ -45,7 +45,7 @@ class App extends Component {
           </aside>
           <div className="ant-layout-main">
             <div className="ant-layout-header">
-              <div className="ant-aside-action" onClick={this.onCollapseChange}>
+              <div className="ant-aside-action" onClick={this.onCollapseChange.bind(this)}>
                 {collapse ? <Icon type="menu-unfold" />: <Icon type="menu-fold" />}
               </div>
               <div className="ant-aside-logout"><Icon type="logout" /></div>
@@ -53,7 +53,7 @@ class App extends Component {
             <div className="ant-layout-container">
               <div className="ant-layout-content">
                 <div style={{ height: 520 }}>
-                  内容区域
+                  {this.props.children}
                 </div>
               </div>
             </div>

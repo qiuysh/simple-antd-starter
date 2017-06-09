@@ -1,21 +1,18 @@
 /**
  * Created by qiuyishu on 16/12/11.
  */
-import React from 'react';
+import React, {Component} from 'react';
 import { Form, Input, Icon, Button } from 'antd';
 
-let Users = React.createClass({
+class Messages extends Component {
+    constructor(props) {
+        super(props)
+    }
 
-    getInitialState() {
-
-        return {};
-    },
-
-    render() {
-
+    render () {
         return (
-            <div></div>
-        );
-    },
-});
-export default Users;
+            <div>Messages</div>       
+        )
+    }
+}
+export default Messages;

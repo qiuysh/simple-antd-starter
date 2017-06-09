@@ -17,6 +17,7 @@ let Login = React.createClass({
         setTimeout(function () {
             localStorage.username = forms.username;
             localStorage.password = forms.password;
+            localStorage.token = 'snifoewoidnISOoifnewodrey6454e3_fdsd'
             browserHistory.push('/home/users')
         }, 1000)
     },

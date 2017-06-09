@@ -13,7 +13,7 @@ module.exports = {
   ],
 
   output: {
-    path: path.join(__dirname, './dist'),
+    path: path.join(__dirname, './public'),
     filename: 'bundle.js',
   },
 
@@ -28,12 +28,6 @@ module.exports = {
         'NODE_ENV': JSON.stringify('development')
       },
       '__DEVTOOLS__': process.env.DEVTOOLS === 'true' ? true : false
-    }),
-
-    new HtmlWebpackPlugin({
-      title: 'react_System',
-      filename: 'index.html',
-      template: 'index.template.html',
     })
   ],
   module: {

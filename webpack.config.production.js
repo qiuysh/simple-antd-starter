@@ -55,6 +55,10 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.less$/,
+        loader: 'style!css!less'
+      },
+      {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!cssnext-loader')
       },
