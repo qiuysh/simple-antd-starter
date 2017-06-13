@@ -37,4 +37,6 @@ const routeConfig = {
     ]
 };
 ReactDOM.render(
-    <Router history={browserHistory} routes={routeConfig}/>, document.getElementById('app'));
+    <Router history={browserHistory} routes={routeConfig}/>,
+    document.getElementById('app')
+);

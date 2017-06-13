@@ -44,20 +44,28 @@ class App extends Component {
             <div className="ant-layout-logo"></div>
             <Menu mode="inline" theme="dark" defaultSelectedKeys={['user']}>
               <Menu.Item key="user">
-                <Icon type="user"/>
-                  {!collapse && <span className="nav-text"><Link to="/users">用户管理</Link></span>}
+                <Link to="/users">
+                  <Icon type="user"/>
+                  {!collapse && <span className="nav-text">用户管理</span>}
+                </Link>
               </Menu.Item>
               <Menu.Item key="notification">
-                <Icon type="notification"/>
-                  {!collapse && <span className="nav-text"><Link to="/message">消息管理</Link></span>}
+                <Link to="/message">
+                  <Icon type="notification"/>
+                  {!collapse && <span className="nav-text">消息管理</span>}
+                </Link>
               </Menu.Item>
               <Menu.Item key="folder">
-                <Icon type="folder"/>
-                  {!collapse && <span className="nav-text"><Link to="/books">书籍管理</Link></span>}
+                <Link to="/books">
+                  <Icon type="folder"/>
+                  {!collapse && <span className="nav-text">书籍管理</span>}
+                </Link>
               </Menu.Item>
               <Menu.Item key="setting">
-                <Icon type="setting"/>
-                  {!collapse && <span className="nav-text"><Link to="/system">系统设置</Link></span>}
+                <Link to="/system">
+                  <Icon type="setting"/>
+                  {!collapse && <span className="nav-text">系统设置</span>}
+                </Link>
               </Menu.Item>
             </Menu>
           </aside>

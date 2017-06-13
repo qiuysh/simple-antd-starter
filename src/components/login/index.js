@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Form, Input, Icon, Button} from 'antd';
-import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router';
 import './login.less';
 const FormItem = Form.Item;
 
-let Login = React.createClass({
+class Login extends Component {
 
-    getInitialState() {
-
-        return {};
-    },
+    constructor(props) {
+        super(props);
+    }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -20,7 +19,7 @@ let Login = React.createClass({
             localStorage.token = 'snifoewoidnISOoifnewodrey6454e3_fdsd'
             browserHistory.push('/users')
         }, 1000)
-    },
+    }
 
     render() {
 
@@ -38,13 +37,14 @@ let Login = React.createClass({
                             <Input {...getFieldProps('password')} placeholder="请输入密码"/>
                         </FormItem>
                         <FormItem>
-                            <Button className="btn btn-priame" onClick={this.handleSubmit}>登录</Button>
+                            <Button className="btn btn-priame" onClick={this.handleSubmit.bind(this)}>登录</Button>
                         </FormItem>
                     </Form>
                 </div>
             </div>
         );
-    },
-});
+    }
+};
+
 Login = Form.create()(Login);
 export default Login;
