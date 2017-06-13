@@ -8,16 +8,13 @@
     "deploy": "npm run clean && NODE_ENV=production webpack --config webpack.config.production.js",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/qiuysh/simple-antd-starter.git"
-  },
+  "repository": "git+https://github.com/qiuysh/react_System.git",
   "author": "wuliner",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/qiuysh/simple-antd-starter/issues"
+    "url": "https://github.com/qiuysh/react_System/issues"
   },
-  "homepage": "https://github.com/qiuysh/simple-antd-starter#readme",
+  "homepage": "https://github.com/qiuysh/react_System#readme",
   "dependencies": {
     "antd": "^1.11.3",
     "axios": "^0.16.2",

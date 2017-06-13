@@ -8,7 +8,7 @@
 .ant-layout-aside .ant-layout-logo {
   width: 100%;
   height: 64px;
-  background: #367fa9;
+  /*background: #18a689;*/
   transition: all 0.3s ease;
 }
 
@@ -55,7 +55,11 @@
 .ant-layout-aside .ant-layout-sider > .ant-menu > .ant-menu-item .nav-text {
   vertical-align: baseline;
   display: inline-block;
+  a {
+    color: #fff;
+  }
 }
+
 
 .ant-layout-aside .ant-layout-sider > .ant-menu > .ant-menu-item > .anticon {
   transition: font-size .3s;
@@ -68,6 +72,7 @@
 .ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item > .anticon {
   font-size: 16px;
   display: inline-block;
+  
 }
 
 .ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item .nav-text {
@@ -75,7 +80,6 @@
 }
 
 .ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item:hover {
-  /*background: #2db7f5;*/
   color: #fff;
   transition: all 0s ease;
 }
@@ -83,10 +87,10 @@
 .ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item:hover .nav-text {
   display: inline-block;
   vertical-align: top;
-  /*background: #2db7f5;*/
   color: #fff;
   padding-right: 16px;
   border-radius: 0 5px 5px 0;
+  
 }
 
 .ant-menu-dark.ant-menu-inline .ant-menu-item-selected {
@@ -100,7 +104,7 @@
   width: 64px;
   position: absolute;
   top: 0;
-  background: #3c8dbc;
+  background: #18a689;
   color: #fff;
   text-align: center;
   line-height: 64px;
@@ -115,9 +119,9 @@
 }
 
 .ant-layout-aside .ant-layout-header {
-  background: #3c8dbc;
+  background: #18a689;
   height: 64px;
-  border-bottom: 1px solid #3c8dbc;
+  border-bottom: 1px solid #18a689;
 
 }
 
@@ -151,7 +155,9 @@
 
 .ant-layout-aside .ant-layout-content {
   background: #fff;
-  /*padding: 24px;*/
+  .search-tools {
+    margin-bottom: 15px;
+  }
 }
 
 .ant-layout-aside .ant-layout-footer {

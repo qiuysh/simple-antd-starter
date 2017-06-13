@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Menu, Icon } from 'antd';
-import './assets/css/common.css';
+import './assets/css/common.less';
 
 class App extends Component {
   
