@@ -13,8 +13,9 @@ module.exports = {
   ],
 
   output: {
-    path: path.join(__dirname, './public'),
+    path: path.join(__dirname, './dist'),
     filename: 'bundle.js',
+    chunkFilename: '[name].bundle.chunk.js',
   },
 
   plugins: [
@@ -28,6 +29,12 @@ module.exports = {
         'NODE_ENV': JSON.stringify('development')
       },
       '__DEVTOOLS__': process.env.DEVTOOLS === 'true' ? true : false
+    }),
+     new HtmlWebpackPlugin({
+      title: 'react_System',
+      filename: 'index.html',
+      template: 'index.template.html',
+      favicon: path.join(__dirname, 'src', 'assets', 'images', 'favicon.ico')
     })
   ],
   module: {

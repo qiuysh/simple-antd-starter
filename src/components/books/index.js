@@ -1,18 +1,12 @@
 /**
  * Created by qiuyishu on 16/12/11.
  */
-import React, {Component} from 'react';
-import { Form, Input, Icon, Button } from 'antd';
-
-class Books extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render () {
-        return (
-            <div>Books</div>       
-        )
+const Index = {
+    path: 'books', // 登录路由
+    getComponents(location, callback) {
+        require.ensure([], function (require) {
+            callback(null, require('./books').default)
+        })
     }
 }
-export default Books;
+export default Index;

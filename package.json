@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "deploy": "npm run clean && NODE_ENV=production webpack --config webpack.config.production.js",
-    "start": "node server.js"
+    "start": "webpack && node server.js"
   },
   "repository": "git+https://github.com/qiuysh/react_System.git",
   "author": "wuliner",

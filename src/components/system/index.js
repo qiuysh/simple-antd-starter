@@ -1,18 +1,12 @@
 /**
  * Created by qiuyishu on 16/12/11.
  */
-import React, {Component} from 'react';
-import { Form, Input, Icon, Button } from 'antd';
-
-class System extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render () {
-        return (
-            <div>System</div>       
-        )
+const Index = {
+    path: 'system', // 登录路由
+    getComponents(location, callback) {
+        require.ensure([], function (require) {
+            callback(null, require('./system').default)
+        })
     }
 }
-export default System;
+export default Index;

@@ -18,7 +18,7 @@ let Login = React.createClass({
             localStorage.username = forms.username;
             localStorage.password = forms.password;
             localStorage.token = 'snifoewoidnISOoifnewodrey6454e3_fdsd'
-            browserHistory.push('/home/users')
+            browserHistory.push('/users')
         }, 1000)
     },
 

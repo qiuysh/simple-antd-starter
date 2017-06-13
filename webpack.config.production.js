@@ -41,7 +41,7 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.[chunkhash:8].js'),
 
     new HtmlWebpackPlugin({
-      title: 'antd',
+      title: 'react_System',
       filename: 'index.html',
       template: 'index.template.html',
       favicon: path.join(__dirname, 'src', 'assets', 'images', 'favicon.ico')

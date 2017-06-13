@@ -8,11 +8,11 @@ var app = express();
 var compiler = webpack(config);
 var port = 3001;
 
-var hostProxy = proxy({
-  target: 'http://localhost/mockjsdata/3',
-  changeOrigin: true,
-  logLevel: 'debug'
-});
+// var hostProxy = proxy({
+//   target: 'http://localhost/mockjsdata/3',
+//   changeOrigin: true,
+//   logLevel: 'debug'
+// });
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
@@ -25,10 +25,10 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/dist'));
 
 app.get("*", function (req, res) {
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
 });
 
 // app.use('*', hostProxy);

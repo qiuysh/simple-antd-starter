@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Menu, Icon } from 'antd';
+import { browserHistory } from 'react-router';
+import { Menu, Icon, Modal } from 'antd';
 import './assets/css/common.less';
+const confirm = Modal.confirm;
 
 class App extends Component {
   
@@ -18,6 +20,22 @@ class App extends Component {
       })
   }
 
+  onLogout() {
+    let token = localStorage.getItem('token');
+    confirm({
+      title: '注销',
+      content: '是否要退出当前账号？',
+      onOk() {
+        if (token) {
+          localStorage.removeItem('token');
+          browserHistory.push('/login');
+        }
+      },
+      onCancel() {},
+    });
+    
+  }
+
   render() {
     const collapse = this.state.collapse;
     return (
@@ -27,19 +45,19 @@ class App extends Component {
             <Menu mode="inline" theme="dark" defaultSelectedKeys={['user']}>
               <Menu.Item key="user">
                 <Icon type="user"/>
-                  {!collapse && <span className="nav-text"><Link to="/home/users">用户管理</Link></span>}
+                  {!collapse && <span className="nav-text"><Link to="/users">用户管理</Link></span>}
               </Menu.Item>
               <Menu.Item key="notification">
                 <Icon type="notification"/>
-                  {!collapse && <span className="nav-text"><Link to="/home/messages">消息管理</Link></span>}
+                  {!collapse && <span className="nav-text"><Link to="/message">消息管理</Link></span>}
               </Menu.Item>
               <Menu.Item key="folder">
                 <Icon type="folder"/>
-                  {!collapse && <span className="nav-text"><Link to="/home/books">书籍管理</Link></span>}
+                  {!collapse && <span className="nav-text"><Link to="/books">书籍管理</Link></span>}
               </Menu.Item>
               <Menu.Item key="setting">
                 <Icon type="setting"/>
-                  {!collapse && <span className="nav-text"><Link to="/home/system">系统设置</Link></span>}
+                  {!collapse && <span className="nav-text"><Link to="/system">系统设置</Link></span>}
               </Menu.Item>
             </Menu>
           </aside>
@@ -48,7 +66,7 @@ class App extends Component {
               <div className="ant-aside-action" onClick={this.onCollapseChange.bind(this)}>
                 {collapse ? <Icon type="menu-unfold" />: <Icon type="menu-fold" />}
               </div>
-              <div className="ant-aside-logout"><Icon type="logout" /></div>
+              <div className="ant-aside-logout" onClick={this.onLogout.bind(this)}><Icon type="logout" /></div>
             </div>
             <div className="ant-layout-container">
               <div className="ant-layout-content">

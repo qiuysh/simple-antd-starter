@@ -1,18 +1,12 @@
 /**
  * Created by qiuyishu on 16/12/11.
  */
-import React, {Component} from 'react';
-import { Form, Input, Icon, Button } from 'antd';
-
-class Messages extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render () {
-        return (
-            <div>Messages</div>       
-        )
+const Index = {
+    path: 'message', // 登录路由
+    getComponent: (nextState, cb) => {
+        require.ensure([], (require) => {
+            cb(null, require('./messages').default)
+        })
     }
 }
-export default Messages;
+export default Index;
