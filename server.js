@@ -18,20 +18,22 @@ app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath,
   hot: true,
-  stats: { colors: true }
+  stats: {
+    colors: true
+  }
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.use(express.static(__dirname + '/public'));
 
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 });
 
 // app.use('*', hostProxy);
 
-app.listen(port, function(error) {
+app.listen(port, function (error) {
   if (error) {
     console.error(error)
   } else {

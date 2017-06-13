@@ -26,29 +26,18 @@ let Login = React.createClass({
 
         const { getFieldProps } = this.props.form;
 
-        const formItemLayout = {
-            labelCol: {span: 3},
-            wrapperCol: {span: 21},
-        };
-
         return (
             <div className="login-wrapper">
                 <div className="login-form">
                     <h1>react_System</h1>
                     <Form horizontal>
-                        <FormItem
-                            {...formItemLayout}
-                            label="账户">
+                        <FormItem>
                             <Input {...getFieldProps('username')} placeholder="请输入账号"/>
                         </FormItem>
-                        <FormItem
-                            {...formItemLayout}
-                            label="密码">
+                        <FormItem>
                             <Input {...getFieldProps('password')} placeholder="请输入密码"/>
                         </FormItem>
-                        <FormItem 
-                            {...formItemLayout}
-                            label="&nbsp;">
+                        <FormItem>
                             <Button className="btn btn-priame" onClick={this.handleSubmit}>登录</Button>
                         </FormItem>
                     </Form>
