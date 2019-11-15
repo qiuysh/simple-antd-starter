@@ -20,9 +20,10 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.ts[x]?$/,
         include: path.join(__dirname, '../src'),
         use: [
+           "babel-loader",
           {
             loader: 'awesome-typescript-loader',
             options: {
@@ -31,19 +32,19 @@ module.exports = {
           }
         ]
       },
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        include: path.join(__dirname, '../src'),
-        use: [
-          {
-            loader: 'source-map-loader',
-            options: {
-              cacheDirectory: true,
-            }
-          }
-        ]
-      },
+    //   {
+    //     enforce: "pre",
+    //     test: /\.js$/,
+    //     include: path.join(__dirname, '../src'),
+    //     use: [
+    //       {
+    //         loader: 'source-map-loader',
+    //         options: {
+    //           cacheDirectory: true,
+    //         }
+    //       }
+    //     ]
+    //   },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader', 'postcss-loader']

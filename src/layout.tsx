@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Layout } from 'antd';
 import { withRouter } from 'react-router-dom';
-// import TopNav from '@/components/topNav';
-// import SiderMenu from '@/components/siderMenu';
-// import Footer from '@/components/footer';
+import TopNav from '@/components/topNav';
+import SiderMenu from '@/components/siderMenu';
+import Footer from '@/components/footer';
 import 'antd/dist/antd.less';
 import './assets/css/index.less';
 const { Content } = Layout;
@@ -28,8 +28,6 @@ class BaseLayout extends React.Component<any, any> {
     const { collapsed } = this.state;
     return (
       <Layout>
-      234
-      /*
         <SiderMenu collapsed={collapsed} />
         <Layout>
           <TopNav 
@@ -40,7 +38,7 @@ class BaseLayout extends React.Component<any, any> {
             {this.props.children}
           </Content>
           <Footer /> 
-        </Layout>*/
+        </Layout>
       </Layout>
     );
   }
