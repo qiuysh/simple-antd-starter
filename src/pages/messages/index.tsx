@@ -3,8 +3,8 @@
  */
 import * as React from "react";
 
-class Messages extends React.Component {
-  constructor(props) {
+class Messages extends React.Component< any > {
+  constructor(props: any) {
     super(props)
   }
 

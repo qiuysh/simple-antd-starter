@@ -3,13 +3,12 @@ import { Form, Input, Checkbox, Button } from 'antd';
 import './login.less';
 const FormItem = Form.Item;
 
-class Login extends React.Component<{}> {
+class Login extends React.Component< any > {
 
-    handleSubmit(e) {
+    handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        const { form } = this.props;
-        const forms = form.getFieldsValue();
-        setTimeout(function () {
+        const forms = this.props.form.getFieldsValue();
+        setTimeout(() => {
             localStorage.username = forms.username;
             localStorage.password = forms.password;
             localStorage.token = 'snifoewoidnISOoifnewodrey6454e3_fdsd';
@@ -18,8 +17,7 @@ class Login extends React.Component<{}> {
     }
 
     render() {
-        let { form } = this.props;
-        const { getFieldDecorator } = form;
+        const { getFieldDecorator } = this.props.form;
         return (
             <div className="login-wrapper">
                 <div className="login-form">
@@ -46,7 +44,7 @@ class Login extends React.Component<{}> {
                             <Button type="primary" htmlType="submit" className="btn btn-priame" onClick={this.handleSubmit.bind(this)}>
                             登录
                             </Button>
-                            <a href="javascript:;q">注册</a>
+                            <a >注册</a>
                         </FormItem>
                     </Form>
                 </div>
@@ -55,5 +53,4 @@ class Login extends React.Component<{}> {
     }
 };
 
-Login = Form.create()(Login);
-export default Login;
+export default Form.create()(Login);

@@ -1,7 +1,8 @@
-var path = require('path');
-var webpack = require('webpack');
-var autoprefixer = require('autoprefixer');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 

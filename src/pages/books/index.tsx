@@ -3,7 +3,7 @@
  */
 import * as React from "react";
 
-class Books extends React.Component {
+class Books extends React.Component< any > {
 
   render () {
     return (

@@ -3,7 +3,7 @@ import { Menu, Icon, Layout } from 'antd';
 import { Link } from 'react-router-dom';
 const { Sider } = Layout;
 
-export default function SiderMenu(props) {
+export default function SiderMenu(props: any) {
 
   const { collapsed } = props;
 

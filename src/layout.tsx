@@ -1,20 +1,22 @@
 import * as React from 'react';
 import { Layout } from 'antd';
 import { withRouter } from 'react-router-dom';
-import TopNav from '@/components/topNav';
-import SiderMenu from '@/components/siderMenu';
-import Footer from '@/components/footer';
+import TopNav from './components/topNav';
+import SiderMenu from './components/siderMenu';
+import Footer from './components/footer';
 import 'antd/dist/antd.less';
 import './assets/css/index.less';
 const { Content } = Layout;
 
-class BaseLayout extends React.Component<any, any> {
+class BaseLayout extends React.Component< any > {
 
   state = {
     collapsed: false
   }
   
-  toggle = (collapsed: boolean) => {
+  changeCollapse = () => {
+    let { collapsed } = this.state;
+    collapsed = !collapsed;
     this.setState({
       collapsed
     })
@@ -27,19 +29,21 @@ class BaseLayout extends React.Component<any, any> {
   render() {
     const { collapsed } = this.state;
     return (
-      <Layout>
-        <SiderMenu collapsed={collapsed} />
+      <React.Fragment>
         <Layout>
-          <TopNav 
-            collapsed={collapsed} 
-            toggle={this.toggle}
-          />
-          <Content style={{ margin: '24px 24px 0', height: this.getViewPortHeight() - 100 }}>
-            {this.props.children}
-          </Content>
-          <Footer /> 
+          <SiderMenu collapsed={collapsed} />
+          <Layout>
+            <TopNav 
+              collapsed={collapsed} 
+              changeCollapse={this.changeCollapse}
+            />
+            <Content style={{ margin: '24px 24px 0', height: this.getViewPortHeight() - 100 }}>
+              {this.props.children}
+            </Content>
+            <Footer /> 
+          </Layout>
         </Layout>
-      </Layout>
+      </React.Fragment>
     );
   }
 };

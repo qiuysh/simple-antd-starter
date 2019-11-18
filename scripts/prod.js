@@ -1,22 +1,23 @@
-var path = require('path');
-var webpack = require('webpack');
-var autoprefixer = require('autoprefixer');
-var MiniCssExtractPlugin = require("mini-css-extract-plugin");
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-var OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var os = require('os');
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const os = require('os');
 
 module.exports = {
 
   mode: 'production',
 
   entry: {
-    app: [ 'babel-polyfill', './src/index' ],
+    app: [ path.join(__dirname, '../src/index') ],
   },
 
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '../dist'),
     filename: '[name].[chunkhash:8].js',
     chunkFilename: "[id].chunk.[chunkhash:8].js",
   },
@@ -88,19 +89,26 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js[x]?$/,
+        test: /\.ts[x]?$/,
         exclude: /node_modules/,
         include: path.resolve('src'),
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
+        use: [
+          "babel-loader",
+          {
+            loader: 'awesome-typescript-loader',
+            options: {
+              cacheDirectory: true,
+            }
           }
-        }]
+        ]
       },
       {
-        test: /\.(less|css)$/,
-        use: [ MiniCssExtractPlugin.loader, 'css-loader', 'less-loader', 'postcss-loader']
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
+      },
+      {
+        test: /\.less$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)(\?[tv]=[\d.]+)*$/,
@@ -119,12 +127,16 @@ module.exports = {
       {
         test: /\.ejs$/,
         use: ['ejs-loader']
+      },
+      {
+        test: /\.json$/,
+        use: ['json-loader']
       }
     ]
   },
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     alias: {
       '@': path.resolve(__dirname, '../src'),
     }

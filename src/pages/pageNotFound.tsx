@@ -1,13 +1,13 @@
 /**
  * Created by qiuyishu on 16/12/11.
  */
-import * as React, { Component } from 'react';
+import * as React from 'react';
 
-class Books extends Component {
+class Books extends React.Component {
 
   render () {
     return (
-      <div>Books</div>       
+      <div>404</div>       
     )
   }
 }

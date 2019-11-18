@@ -3,7 +3,7 @@
  */
 import * as React from 'react';
 
-class System extends React.Component {
+class System extends React.Component< any > {
 
   render () {
     return (

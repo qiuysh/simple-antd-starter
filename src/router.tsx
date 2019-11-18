@@ -9,18 +9,18 @@ import Messages from './pages/messages';
 import PageNotFound from './pages/pageNotFound';
 
 // 根路由
-const BasicRouter = ({}) => (
+const BasicRouter = () => (
   <HashRouter>
-      <Switch>
-        <Route path="/login" component={Login} />
-          <BaseLayout>
-            <Route path="/users" component={Users} />
-            <Route path="/books" component={Books} />
-            <Route path="/system" component={System} />
-            <Route path="/messages" component={Messages} />
-            <Route path="*" component={PageNotFound}/>
-          </BaseLayout>
-      </Switch>
+    <Switch>
+      <Route path="/login" component={Login} />
+      <BaseLayout>
+        <Route path="/users" component={Users} />
+        <Route path="/books" component={Books} />
+        <Route path="/system" component={System} />
+        <Route path="/messages" component={Messages} />
+      </BaseLayout>
+      <Route path="*" component={PageNotFound} />
+    </Switch>
   </HashRouter>
 )
 

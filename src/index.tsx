@@ -1,9 +1,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { ConfigProvider } from 'antd';
 import BasicRouter from "./router";
+import 'antd/dist/antd.less';
 
 
 ReactDOM.render(
-  <BasicRouter />,
+  <ConfigProvider>
+    <BasicRouter />
+  </ConfigProvider>,
   document.getElementById('app')
 );

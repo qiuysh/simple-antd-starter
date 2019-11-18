@@ -1,14 +1,14 @@
 /**
  * Created by qiuyishu on 16/12/11.
  */
-import * as React from 'react';
+import React from 'react';
 
-class Users extends React.Component {
+class Users extends React.Component< any > {
 
   render () {
     
     return (
-      <div></div>       
+      <div>234</div>       
     )
   }
 
