@@ -1,16 +1,10 @@
-/**
- * Created by qiuyishu on 16/12/11.
- */
-import React from 'react';
+/** @format */
 
-class Users extends React.Component< any > {
+import * as React from "react";
 
-  render () {
-    
-    return (
-      <div>234</div>       
-    )
+class Users extends React.Component<any> {
+  render() {
+    return <div>234</div>;
   }
-
 }
 export default Users;

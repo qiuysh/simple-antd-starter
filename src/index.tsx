@@ -1,13 +1,13 @@
+/** @format */
+
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { ConfigProvider } from 'antd';
+import { ConfigProvider } from "antd";
 import BasicRouter from "./router";
-import 'antd/dist/antd.less';
-
 
 ReactDOM.render(
-  <ConfigProvider>
+  <ConfigProvider locale={{ locale: "zh-cn" }}>
     <BasicRouter />
   </ConfigProvider>,
-  document.getElementById('app')
+  document.getElementById("app"),
 );

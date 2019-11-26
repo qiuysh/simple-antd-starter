@@ -1,12 +1,14 @@
+/** @format */
+
 import * as React from "react";
-import { HashRouter, Route, Switch } from "react-router-dom";
-import BaseLayout from './layout';
-import Login from './pages/login';
-import Users from './pages/users';
-import Books from './pages/books';
-import System from './pages/system';
-import Messages from './pages/messages';
-import PageNotFound from './pages/pageNotFound';
+import {HashRouter, Route, Switch} from "react-router-dom";
+import BaseLayout from "./layout";
+import Login from "./pages/login";
+import Users from "./pages/users";
+import Books from "./pages/books";
+import System from "./pages/system";
+import Messages from "./pages/messages";
+import PageNotFound from "./pages/pageNotFound";
 
 // 根路由
 const BasicRouter = () => (
@@ -22,6 +24,6 @@ const BasicRouter = () => (
       <Route path="*" component={PageNotFound} />
     </Switch>
   </HashRouter>
-)
+);
 
 export default BasicRouter;
