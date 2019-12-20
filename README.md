@@ -4,7 +4,7 @@
 
 > 该项目为一个练习项目，主要为了巩固自己所接触过的一些东西
 
-技术栈：react+es6+react-router+antd+webpack+redux
+技术栈：react+ts+react-router+antd+webpack+redux
 
 添加yarn包管理
 
