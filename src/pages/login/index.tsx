@@ -1,64 +1,58 @@
 /** @format */
 
-import * as React from "react";
+import React from "react";
 import { Form, Input, Checkbox, Button } from "antd";
 import * as ajax from "./services";
 import "./login.less";
 const FormItem = Form.Item;
 
-class Login extends React.Component<any> {
-  handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const param = this.props.form.getFieldsValue();
-    console.log(ajax);
-    ajax.login(param).then(res => {
-      console.log(res);
-    });
-    // setTimeout(() => {
-    //   localStorage.username = forms.username;
-    //   localStorage.password = forms.password;
-    //   localStorage.token = "snifoewoidnISOoifnewodrey6454e3_fdsd";
-    //   this.props.history.push("/users");
-    // }, 1000);
-  };
-
-  render() {
-    const { getFieldDecorator } = this.props.form;
-    return (
-      <div className="login-wrapper">
-        <div className="login-form">
-          <h1>react_System</h1>
-          <Form>
-            <FormItem>
-              {getFieldDecorator("username")(<Input placeholder="admin" />)}
-            </FormItem>
-            <FormItem>
-              {getFieldDecorator("password")(
-                <Input type="password" placeholder="admin" />,
-              )}
-            </FormItem>
-            <FormItem>
-              {getFieldDecorator("remember", {
-                valuePropName: "checked",
-                initialValue: true,
-              })(<Checkbox>记住密码</Checkbox>)}
-              <a className="login-form-forgot" href="">
-                忘记密码
-              </a>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="btn btn-priame"
-                onClick={this.handleSubmit.bind(this)}>
-                登录
-              </Button>
-              <a>注册</a>
-            </FormItem>
-          </Form>
-        </div>
+const Login = ({ history, form }) => {
+  const { getFieldDecorator } = form;
+  return (
+    <div className="login-wrapper">
+      <div className="login-form">
+        <h1>react_System</h1>
+        <Form>
+          <FormItem label="用户">
+            {getFieldDecorator("username")(<Input placeholder="admin" />)}
+          </FormItem>
+          <FormItem label="密码">
+            {getFieldDecorator("password")(
+              <Input type="password" placeholder="admin" />,
+            )}
+          </FormItem>
+          <FormItem>
+            <Checkbox>记住密码</Checkbox>
+            <a className="login-form-forgot" href="">
+              忘记密码
+            </a>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="btn btn-priame"
+              onClick={e => handleSubmit(e, history, form)}>
+              登录
+            </Button>
+            <a>注册</a>
+          </FormItem>
+        </Form>
       </div>
-    );
-  }
+    </div>
+  );
+};
+
+function handleSubmit(e: React.FormEvent, history, form) {
+  e.preventDefault();
+  const param = form.getFieldsValue();
+  // ajax.login(param).then(res => {
+  //   console.log(res);
+  // });
+  setTimeout(() => {
+    localStorage.username = param.username;
+    localStorage.password = param.password;
+    localStorage.token = "snifoewoidnISOoifnewodrey6454e3_fdsd";
+    history.push("/users");
+  }, 1000);
 }
 
 export default Form.create()(Login);

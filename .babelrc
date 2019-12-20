@@ -1,6 +1,7 @@
 {
   "plugins": [
     "transform-runtime",
+    "dynamic-import-webpack",
     ["import", { 
       "libraryName": "antd", 
       "libraryDirectory": "es", 

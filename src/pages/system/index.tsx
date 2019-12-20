@@ -4,7 +4,7 @@
  * @format
  */
 
-import * as React from "react";
+import React from "react";
 
 class System extends React.Component<any> {
   render() {

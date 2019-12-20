@@ -32,19 +32,19 @@ module.exports = {
           },
         ],
       },
-      //   {
-      //     enforce: "pre",
-      //     test: /\.js$/,
-      //     include: path.join(__dirname, '../src'),
-      //     use: [
-      //       {
-      //         loader: 'source-map-loader',
-      //         options: {
-      //           cacheDirectory: true,
-      //         }
-      //       }
-      //     ]
-      //   },
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        include: path.join(__dirname, "../src"),
+        use: [
+          {
+            loader: "source-map-loader",
+            options: {
+              cacheDirectory: true,
+            },
+          },
+        ],
+      },
       {
         test: /\.css$/,
         use: [
@@ -135,7 +135,9 @@ module.exports = {
     modules: ["node_modules"],
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
     alias: {
-      "@utils": path.join(__dirname, "..", "src", "utils"),
+      "@": path.join(__dirname, "../src"),
+      "@components": path.join(__dirname, "../src/components"),
+      "@utils": path.join(__dirname, "../src/utils"),
     },
   },
 

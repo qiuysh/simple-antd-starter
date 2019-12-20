@@ -1,15 +1,15 @@
 /** @format */
 
-import * as React from "react";
-import {Layout} from "antd";
-import {withRouter} from "react-router-dom";
+import React from "react";
+import { Layout } from "antd";
+import { withRouter } from "react-router-dom";
 import TopNav from "./components/topNav";
 import DocumentTitle from "react-document-title";
 import SiderMenu from "./components/siderMenu";
 import Footer from "./components/footer";
 import "antd/dist/antd.less";
 import "./assets/css/index.less";
-const {Content} = Layout;
+const { Content } = Layout;
 const TITLE = "系统";
 
 class BaseLayout extends React.Component<any> {
@@ -18,7 +18,7 @@ class BaseLayout extends React.Component<any> {
   };
 
   changeCollapse = () => {
-    let {collapsed} = this.state;
+    let { collapsed } = this.state;
     collapsed = !collapsed;
     this.setState({
       collapsed,
@@ -33,7 +33,7 @@ class BaseLayout extends React.Component<any> {
   }
 
   render() {
-    const {collapsed} = this.state;
+    const { collapsed } = this.state;
     return (
       <React.Fragment>
         <DocumentTitle title={TITLE}>
