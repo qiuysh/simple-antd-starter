@@ -17,7 +17,7 @@ export default function request(
   })
     .then(res => {
       const { status, statusText } = res;
-      const successed = checkRspStatus(status);
+      const successed: boolean = checkRspStatus(status);
       console.log(res);
       if (successed) {
         return Promise.resolve({
@@ -50,8 +50,8 @@ export default function request(
         },
       );
 
-      let msg;
-      let statusCode;
+      let msg: string;
+      let statusCode: number;
 
       if (response && response instanceof Object) {
         const { statusText } = response;

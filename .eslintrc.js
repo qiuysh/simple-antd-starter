@@ -30,6 +30,7 @@ module.exports = {
         allowExpressions: true, 
         allowTypedFunctionExpressions: true,
       }
-    ]
+    ],
+    "no-import-assign": "warn"
   }
 };

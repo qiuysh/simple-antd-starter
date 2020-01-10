@@ -1,10 +1,6 @@
-/**
- * Created by qiuyishu on 16/12/11.
- *
- * @format
- */
+/** @format */
 
-import React from "react";
+import * as React from "react";
 
 class Books extends React.Component {
   render() {

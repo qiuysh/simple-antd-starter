@@ -1,24 +1,42 @@
 /** @format */
 
-import React from "react";
-import { Form, Input, Checkbox, Button } from "antd";
+import * as React from "react";
+import { Form, Input, Icon, Checkbox, Button } from "antd";
 import * as ajax from "./services";
 import "./login.less";
 const FormItem = Form.Item;
 
-const Login = ({ history, form }) => {
+export interface Props {
+  history: any;
+  form: any;
+}
+
+const Login = ({ history, form }: Props): JSX.Element => {
   const { getFieldDecorator } = form;
   return (
     <div className="login-wrapper">
       <div className="login-form">
         <h1>react_System</h1>
         <Form>
-          <FormItem label="用户">
-            {getFieldDecorator("username")(<Input placeholder="admin" />)}
+          <FormItem>
+            {getFieldDecorator("username")(
+              <Input
+                prefix={
+                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                }
+                placeholder="账号"
+              />,
+            )}
           </FormItem>
-          <FormItem label="密码">
+          <FormItem>
             {getFieldDecorator("password")(
-              <Input type="password" placeholder="admin" />,
+              <Input
+                prefix={
+                  <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
+                }
+                type="password"
+                placeholder="密码"
+              />,
             )}
           </FormItem>
           <FormItem>
@@ -41,9 +59,9 @@ const Login = ({ history, form }) => {
   );
 };
 
-function handleSubmit(e: React.FormEvent, history, form) {
+function handleSubmit(e: React.FormEvent, history: any, form: any) {
   e.preventDefault();
-  const param = form.getFieldsValue();
+  let param: any = form.getFieldsValue();
   // ajax.login(param).then(res => {
   //   console.log(res);
   // });
@@ -51,7 +69,7 @@ function handleSubmit(e: React.FormEvent, history, form) {
     localStorage.username = param.username;
     localStorage.password = param.password;
     localStorage.token = "snifoewoidnISOoifnewodrey6454e3_fdsd";
-    history.push("/users");
+    history.push("/dashboard");
   }, 1000);
 }
 

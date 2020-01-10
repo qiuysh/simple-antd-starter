@@ -2,25 +2,27 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入。
     "allowUnreachableCode": true, // 不报告执行不到的代码错误。
+    "allowJs": true,
     "module": "esNext", // 使用 ES2015 模块
     "target": "es6", // 编译成 ES2015 (Babel 将做剩下的事情)
-    "baseUrl": "./src", // 可以相对这个目录 import 文件
+    "baseUrl": ".", // 可以相对这个目录 import 文件
     "sourceMap": true, // 使 TypeScript 生成 sourcemaps
     "outDir": "dist", // 构建输出目录 (因为我们大部分时间都在使用 Webpack，所以不太相关)
     "jsx": "preserve", // 开启 JSX 模式, 但是 "preserve" 告诉 TypeScript 不要转换它(我们将使用 Babel)
     "strict": true,
     "moduleResolution": "node",
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "paths": {
-      "@": ["./src"],
-      "@components": ["./src/components"],
-      "@utils": ["./src/utils"]
+      "@pages/*": ["./src/pages/*"],
+      "@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
   "exclude": [
     "node_modules",
     "scripts",
-    "dist"
+    "dist",
+    "typings"
   ],
   "include": [
     "./src"

@@ -1,10 +1,6 @@
-/**
- * Created by qiuyishu on 17/2/16.
- *
- * @format
- */
+/** @format */
 
-export function redirectToLogin(nextState, replace) {
+export function redirectToLogin(nextState: any, replace: any) {
   if (!loggedIn()) {
     replace({
       pathname: "/login",

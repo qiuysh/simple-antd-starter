@@ -1,14 +1,10 @@
-/**
- * Created by qiuyishu on 16/12/11.
- *
- * @format
- */
+/** @format */
 
-import React from "react";
+import * as React from "react";
 
-class System extends React.Component<any> {
+class SettingComponent extends React.Component<any> {
   render() {
     return <div>System</div>;
   }
 }
-export default System;
+export default SettingComponent;

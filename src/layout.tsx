@@ -1,24 +1,28 @@
 /** @format */
 
-import React from "react";
+import * as React from "react";
 import { Layout } from "antd";
 import { withRouter } from "react-router-dom";
-import TopNav from "./components/topNav";
 import DocumentTitle from "react-document-title";
-import SiderMenu from "./components/siderMenu";
-import Footer from "./components/footer";
-import "antd/dist/antd.less";
+import TopNav from "@components/topNav";
+import SiderMenu from "@components/siderMenu";
+import Footer from "@components/footer";
 import "./assets/css/index.less";
 const { Content } = Layout;
-const TITLE = "系统";
 
-class BaseLayout extends React.Component<any> {
-  state = {
+const TITLE: string = "系统";
+
+type layoutStates = {
+  collapsed: boolean;
+};
+
+class BaseLayout extends React.Component<any, layoutStates> {
+  state: layoutStates = {
     collapsed: false,
   };
 
-  changeCollapse = () => {
-    let { collapsed } = this.state;
+  changeCollapse = (): void => {
+    let collapsed: boolean = this.state.collapsed;
     collapsed = !collapsed;
     this.setState({
       collapsed,
@@ -34,6 +38,7 @@ class BaseLayout extends React.Component<any> {
 
   render() {
     const { collapsed } = this.state;
+    const { children } = this.props;
     return (
       <React.Fragment>
         <DocumentTitle title={TITLE}>
@@ -49,7 +54,7 @@ class BaseLayout extends React.Component<any> {
                   margin: "24px 24px 0",
                   height: this.getViewPortHeight() - 100,
                 }}>
-                {this.props.children}
+                {children}
               </Content>
               <Footer />
             </Layout>
