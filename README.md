@@ -1,23 +1,44 @@
 ### react_System
 
-#### react.js编写后台管理系统案例
-
-> 该项目为一个练习项目，主要为了巩固自己所接触过的一些东西
+> 该项目为一个练习项目
 
 技术栈：react+ts+react-router+antd+webpack+redux
 
 添加yarn包管理
 
-1、安装依赖或者 yarn install
+1、安装依赖
 
 ```bash
-    yarn 
+    npm i 
 ```
 
 
-2、启动项目或者yarn
+2、启动项目
 
 ```bash
     npm start
 ```
 
+3、项目目录结构
+```
+.
+├── README.md
+├── dist
+├── package-lock.json
+├── package.json
+├── scripts
+│   ├── base.js
+│   ├── dev.js
+│   └── prod.js
+├── src
+│   ├── assets
+│   ├── components
+│   ├── index.tsx
+│   ├── layout.tsx
+│   ├── pages
+│   ├── router.tsx
+│   ├── template.ejs
+│   └── utils
+└── tsconfig.json
+
+```
