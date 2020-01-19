@@ -1,28 +1,41 @@
 /** @format */
 
 import * as React from "react";
-import { Form, Input, Icon, Checkbox, Button } from "antd";
+import {
+  Form,
+  Input,
+  Icon,
+  Checkbox,
+  Button,
+  message,
+} from "antd";
 import * as ajax from "./services";
 import "./login.less";
 const FormItem = Form.Item;
 
-export interface Props {
+export interface iLoginProps {
   history: any;
   form: any;
 }
 
-const Login = ({ history, form }: Props): JSX.Element => {
+const Login = ({
+  history,
+  form,
+}: iLoginProps): JSX.Element => {
   const { getFieldDecorator } = form;
   return (
     <div className="login-wrapper">
       <div className="login-form">
-        <h1>react_System</h1>
+        <h1>Fire Hero</h1>
         <Form>
           <FormItem>
             {getFieldDecorator("username")(
               <Input
                 prefix={
-                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                  <Icon
+                    type="user"
+                    style={{ color: "rgba(0,0,0,.25)" }}
+                  />
                 }
                 placeholder="账号"
               />,
@@ -32,7 +45,10 @@ const Login = ({ history, form }: Props): JSX.Element => {
             {getFieldDecorator("password")(
               <Input
                 prefix={
-                  <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
+                  <Icon
+                    type="lock"
+                    style={{ color: "rgba(0,0,0,.25)" }}
+                  />
                 }
                 type="password"
                 placeholder="密码"
@@ -59,18 +75,21 @@ const Login = ({ history, form }: Props): JSX.Element => {
   );
 };
 
-function handleSubmit(e: React.FormEvent, history: any, form: any) {
+function handleSubmit(
+  e: React.FormEvent,
+  history: any,
+  form: any,
+) {
   e.preventDefault();
   let param: any = form.getFieldsValue();
-  // ajax.login(param).then(res => {
-  //   console.log(res);
-  // });
-  setTimeout(() => {
-    localStorage.username = param.username;
-    localStorage.password = param.password;
-    localStorage.token = "snifoewoidnISOoifnewodrey6454e3_fdsd";
-    history.push("/dashboard");
-  }, 1000);
+  ajax.login(param).then((res: any) => {
+    let isLoginSuccess: Boolean = res.result;
+    if (isLoginSuccess) {
+      history.push("/dashboard");
+    } else {
+      message.error(res.result_message);
+    }
+  });
 }
 
 export default Form.create()(Login);

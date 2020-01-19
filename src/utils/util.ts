@@ -1,6 +1,9 @@
 /** @format */
 
-export function redirectToLogin(nextState: any, replace: any) {
+export function redirectToLogin(
+  nextState: any,
+  replace: any,
+) {
   if (!loggedIn()) {
     replace({
       pathname: "/login",

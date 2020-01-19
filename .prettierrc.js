@@ -1,5 +1,5 @@
 module.exports =  {
-  "printWidth": 80,
+  "printWidth": 60,
   "semi": true,
   "singleQuote": false,
   "trailingComma": "all",

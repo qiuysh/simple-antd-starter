@@ -1,5 +1,9 @@
 /** @format */
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosPromise } from "axios";
+import axios, {
+  AxiosRequestConfig,
+  AxiosResponse,
+  AxiosPromise,
+} from "axios";
 import { message } from "antd";
 
 export default function request(
@@ -10,21 +14,21 @@ export default function request(
   return axios({
     url,
     method: "get", // 默认值
-    headers: { "content-type": "application/json;charset=UTF-8" },
+    headers: {
+      "content-type": "application/json;charset=UTF-8",
+    },
     withCredentials: true,
     timeout: 5000,
     ...options,
   })
-    .then(res => {
-      const { status, statusText } = res;
+    .then((res: any) => {
+      const { status } = res;
       const successed: boolean = checkRspStatus(status);
-      console.log(res);
+      message.destroy();
+
       if (successed) {
         return Promise.resolve({
-          success: true,
-          message: statusText,
-          statusCode: status,
-          data: res.data || {},
+          ...res.data,
         });
       }
 
@@ -71,7 +75,7 @@ export default function request(
     });
 }
 
-export function checkRspStatus(status: number) {
+function checkRspStatus(status: number) {
   if (status >= 200 && status < 300) {
     return true;
   }
@@ -98,5 +102,8 @@ function tipError(res: AxiosResponse) {
       // 注意：其他错误的错误提示需要在业务内自行处理
       break;
   }
-  console.error("http返回结果的 status 码错误，错误信息是:", res);
+  console.error(
+    "http返回结果的 status 码错误，错误信息是:",
+    res,
+  );
 }

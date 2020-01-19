@@ -1,40 +1,74 @@
 /** @format */
 
-import React from "react";
-import { Form, Input, Row, Col, Button } from "antd";
+import * as React from "react";
+import {
+  Form,
+  Input,
+  Button,
+  Radio,
+  PageHeader,
+} from "antd";
 import "./style.less";
 const FormItem = Form.Item;
+const { TextArea } = Input;
 
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 4 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 18 },
+  },
+};
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
 class FormComponent extends React.Component<any> {
-  render() {
+  render(): React.ReactNode {
     const { form } = this.props;
     const { getFieldDecorator } = form;
     return (
-      <div className="form-content">
-        <Form layout="inline">
-          <Row>
-            <Col span={24}>
-              <FormItem label="登记名称">
-                {getFieldDecorator("name")(<Input />)}
-              </FormItem>
-            </Col>
-          </Row>
-          <Row>
-            <Col span={24}>
-              <FormItem label="性别">
-                {getFieldDecorator("age")(<Input />)}
-              </FormItem>
-            </Col>
-          </Row>
-          <Row>
-            <Col span={12} offset={8}>
-              <Button type="primary" htmlType="submit">
-                提交
-              </Button>
-            </Col>
-          </Row>
+      <PageHeader className="form-content" title="表单页">
+        <Form {...formItemLayout}>
+          <FormItem label="规则名称">
+            {getFieldDecorator("name")(
+              <Input placeholder="规则名称" />,
+            )}
+          </FormItem>
+          <FormItem label="描述">
+            {getFieldDecorator("desc")(
+              <TextArea placeholder="描述" rows={4} />,
+            )}
+          </FormItem>
+          <Form.Item label="状态">
+            {getFieldDecorator("status", {
+              initialValue: "a",
+            })(
+              <Radio.Group>
+                <Radio value="a">正常</Radio>
+                <Radio value="b">异常</Radio>
+              </Radio.Group>,
+            )}
+          </Form.Item>
+          <Form.Item {...tailFormItemLayout}>
+            <Button>取消</Button>
+            <Button type="primary" htmlType="submit">
+              提交
+            </Button>
+          </Form.Item>
         </Form>
-      </div>
+      </PageHeader>
     );
   }
 }

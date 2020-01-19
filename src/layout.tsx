@@ -10,14 +10,17 @@ import Footer from "@components/footer";
 import "./assets/css/index.less";
 const { Content } = Layout;
 
-const TITLE: string = "系统";
+const TITLE: string = "Fire Hero";
 
-type layoutStates = {
+type iLayoutStates = {
   collapsed: boolean;
 };
 
-class BaseLayout extends React.Component<any, layoutStates> {
-  state: layoutStates = {
+class BaseLayout extends React.Component<
+  any,
+  iLayoutStates
+> {
+  state: iLayoutStates = {
     collapsed: false,
   };
 
@@ -52,7 +55,7 @@ class BaseLayout extends React.Component<any, layoutStates> {
               <Content
                 style={{
                   margin: "24px 24px 0",
-                  height: this.getViewPortHeight() - 100,
+                  minHeight: this.getViewPortHeight() - 100,
                 }}>
                 {children}
               </Content>

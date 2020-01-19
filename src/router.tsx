@@ -2,15 +2,22 @@
 
 import * as React from "react";
 import { Icon } from "antd";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import {
+  HashRouter,
+  Route,
+  Switch,
+} from "react-router-dom";
 
 const BaseLayout = React.lazy(() => import("./layout"));
 const Login = React.lazy(() => import("./pages/login"));
 const Forms = React.lazy(() => import("./pages/form"));
-const DashBoard = React.lazy(() => import("./pages/dashboard"));
-const System = React.lazy(() => import("./pages/system"));
+const DashBoard = React.lazy(() =>
+  import("./pages/dashboard"),
+);
 const Tables = React.lazy(() => import("./pages/table"));
-const PageNotFound = React.lazy(() => import("./pages/pageNotFound"));
+const PageNotFound = React.lazy(() =>
+  import("./pages/pageNotFound"),
+);
 
 const loading: JSX.Element = (
   <div
@@ -36,9 +43,12 @@ const BasicRouter = (): JSX.Element => (
       <Switch>
         <Route path="/login" exact component={Login} />
         <BaseLayout>
-          <Route path="/dashboard" exact component={DashBoard} />
+          <Route
+            path="/dashboard"
+            exact
+            component={DashBoard}
+          />
           <Route path="/form" exact component={Forms} />
-          <Route path="/setting" exact component={System} />
           <Route path="/table" exact component={Tables} />
         </BaseLayout>
         <Route path="*" component={PageNotFound} />

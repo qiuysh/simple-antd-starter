@@ -5,12 +5,15 @@ import { Icon, Layout, Modal } from "antd";
 const { Header } = Layout;
 const confirm = Modal.confirm;
 
-interface Props {
+interface iProps {
   collapsed: boolean;
   changeCollapse: () => void;
 }
 
-export default function TopNav({ collapsed = false, changeCollapse }: Props) {
+export default function TopNav({
+  collapsed = false,
+  changeCollapse,
+}: iProps) {
   return (
     <Header style={{ padding: "0 24px" }}>
       <Icon
@@ -26,17 +29,13 @@ export default function TopNav({ collapsed = false, changeCollapse }: Props) {
 }
 
 function onLogout() {
-  let token = localStorage.getItem("token");
   confirm({
     title: "注销",
     content: "是否要退出当前账号？",
     okText: "确认",
     cancelText: "取消",
     onOk: () => {
-      if (token) {
-        localStorage.removeItem("token");
-        window.location.href = "/#/login";
-      }
+      window.location.href = "/#/login";
     },
     onCancel() {},
   });

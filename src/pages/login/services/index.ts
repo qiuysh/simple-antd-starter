@@ -4,8 +4,8 @@ import requset from "@utils/request";
 // import { stringify } from "qs";
 
 export async function login(params: object) {
-  return requset("/log/v2/api/login", {
-    method: "post",
+  return requset("/api/v1/login", {
+    method: "POST",
     data: params,
   });
 }

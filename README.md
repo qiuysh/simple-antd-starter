@@ -1,26 +1,24 @@
 ### react_System
 
-> 该项目为一个练习项目
+技术栈：react全家桶+antd+axios+ts
 
-技术栈：react+ts+react-router+antd+webpack+redux
-
-添加yarn包管理
+添加npm包管理
 
 1、安装依赖
 
 ```bash
-    npm i 
+npm i
 ```
-
 
 2、启动项目
 
 ```bash
-    npm start
+npm start
 ```
 
 3、项目目录结构
-```
+
+```bash
 .
 ├── README.md
 ├── dist

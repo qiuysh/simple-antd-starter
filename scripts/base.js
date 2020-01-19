@@ -14,8 +14,12 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, "../dist"),
-    filename: devMode ? "bundle.js" : "[name].[chunkhash:8].js",
-    chunkFilename: devMode ? "[name].bundle.js" : "[id].chunk.[chunkhash:8].js",
+    filename: devMode
+      ? "bundle.js"
+      : "[name].[chunkhash:8].js",
+    chunkFilename: devMode
+      ? "[name].bundle.js"
+      : "[id].chunk.[chunkhash:8].js",
   },
 
   module: {
@@ -49,7 +53,9 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+          devMode
+            ? "style-loader"
+            : MiniCssExtractPlugin.loader,
           "css-loader",
           "postcss-loader",
         ],
@@ -57,7 +63,9 @@ module.exports = {
       {
         test: /\.less$/,
         use: [
-          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+          devMode
+            ? "style-loader"
+            : MiniCssExtractPlugin.loader,
           "css-loader",
           "less-loader",
         ],
@@ -65,7 +73,9 @@ module.exports = {
       {
         test: /\.(png|jpg|jpeg|gif|svg)(\?[tv]=[\d.]+)*$/,
         exclude: /node_modules/,
-        use: ["file-loader?name=assets/images/[name].[ext]"],
+        use: [
+          "file-loader?name=assets/images/[name].[ext]",
+        ],
       },
       {
         test: /\.(svg|woff|woff2|ttf|eot)(\?[tv]=[\d.]+)*$/,
@@ -88,7 +98,10 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /(zh-cn).js/),
+    new webpack.ContextReplacementPlugin(
+      /moment[\/\\]locale$/,
+      /(zh-cn).js/,
+    ),
 
     new webpack.LoaderOptionsPlugin({
       minimize: true,
@@ -107,7 +120,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "react_System",
       filename: "index.html",
-      template: path.join(__dirname, "..", "src", "template.ejs"),
+      template: path.join(
+        __dirname,
+        "..",
+        "src",
+        "template.ejs",
+      ),
       favicon: path.join(
         __dirname,
         "..",
@@ -128,7 +146,10 @@ module.exports = {
     modules: ["node_modules"],
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
     alias: {
-      "@components": path.join(__dirname, "../src/components"),
+      "@components": path.join(
+        __dirname,
+        "../src/components",
+      ),
       "@pages": path.join(__dirname, "../src/pages"),
       "@utils": path.join(__dirname, "../src/utils"),
     },

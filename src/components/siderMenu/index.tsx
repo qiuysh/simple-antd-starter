@@ -1,43 +1,41 @@
 /** @format */
 
-import React from "react";
+import * as React from "react";
 import { Menu, Icon, Layout } from "antd";
 import { Link } from "react-router-dom";
+import Logo from "../logo";
 const { Sider } = Layout;
 
-interface Props {
+interface iProps {
   collapsed: boolean;
 }
 
-export default function SiderMenu({ collapsed }: Props): JSX.Element {
+export default function SiderMenu({
+  collapsed,
+}: iProps): JSX.Element {
   return (
     <Sider trigger={null} collapsible collapsed={collapsed}>
-      <div className="logo" style={{ height: 64 }}>
-        logo
-      </div>
-      <Menu mode="inline" theme="dark" defaultSelectedKeys={["dashboard"]}>
+      <Logo collapsed={collapsed} />
+      <Menu
+        mode="inline"
+        theme="dark"
+        defaultSelectedKeys={["dashboard"]}>
         <Menu.Item key="dashboard">
           <Link to="/dashboard">
-            <Icon type="user" />
+            <Icon type="area-chart" />
             <span>仪表盘</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key="notification">
+        <Menu.Item key="table">
           <Link to="/table">
-            <Icon type="notification" />
+            <Icon type="table" />
             <span>表格页</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key="folder">
+        <Menu.Item key="form">
           <Link to="/form">
-            <Icon type="folder" />
+            <Icon type="form" />
             <span>表单页</span>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="setting">
-          <Link to="/setting">
-            <Icon type="setting" />
-            <span>设置页</span>
           </Link>
         </Menu.Item>
       </Menu>
