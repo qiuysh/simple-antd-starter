@@ -26,7 +26,7 @@ const Login = ({
   return (
     <div className="login-wrapper">
       <div className="login-form">
-        <h1>Fire Hero</h1>
+        <h1>No Body</h1>
         <Form>
           <FormItem>
             {getFieldDecorator("username")(
@@ -56,10 +56,10 @@ const Login = ({
             )}
           </FormItem>
           <FormItem>
-            <Checkbox>记住密码</Checkbox>
+            {/* <Checkbox>记住密码</Checkbox>
             <a className="login-form-forgot" href="">
               忘记密码
-            </a>
+            </a> */}
             <Button
               type="primary"
               htmlType="submit"
@@ -67,7 +67,7 @@ const Login = ({
               onClick={e => handleSubmit(e, history, form)}>
               登录
             </Button>
-            <a>注册</a>
+            {/* <a>注册</a> */}
           </FormItem>
         </Form>
       </div>
@@ -85,6 +85,7 @@ function handleSubmit(
   ajax.login(param).then((res: any) => {
     let isLoginSuccess: Boolean = res.result;
     if (isLoginSuccess) {
+      localStorage.setItem("token", res.token);
       history.push("/dashboard");
     } else {
       message.error(res.result_message);

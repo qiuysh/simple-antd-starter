@@ -10,7 +10,7 @@ import Footer from "@components/footer";
 import "./assets/css/index.less";
 const { Content } = Layout;
 
-const TITLE: string = "Fire Hero";
+const TITLE: string = "No Body";
 
 type iLayoutStates = {
   collapsed: boolean;
@@ -25,7 +25,7 @@ class BaseLayout extends React.Component<
   };
 
   changeCollapse = (): void => {
-    let collapsed: boolean = this.state.collapsed;
+    let { collapsed } = this.state;
     collapsed = !collapsed;
     this.setState({
       collapsed,
@@ -41,12 +41,15 @@ class BaseLayout extends React.Component<
 
   render() {
     const { collapsed } = this.state;
-    const { children } = this.props;
+    const { children, history } = this.props;
     return (
       <React.Fragment>
         <DocumentTitle title={TITLE}>
           <Layout>
-            <SiderMenu collapsed={collapsed} />
+            <SiderMenu
+              collapsed={collapsed}
+              history={history}
+            />
             <Layout>
               <TopNav
                 collapsed={collapsed}
@@ -55,7 +58,7 @@ class BaseLayout extends React.Component<
               <Content
                 style={{
                   margin: "24px 24px 0",
-                  minHeight: this.getViewPortHeight() - 100,
+                  minHeight: this.getViewPortHeight() - 154,
                 }}>
                 {children}
               </Content>

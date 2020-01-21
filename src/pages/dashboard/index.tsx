@@ -1,68 +1,127 @@
 /** @format */
 
 import * as React from "react";
-import { Row, Col } from "antd";
-import RenderCard from "./renderCard";
+import { Row, Col, message } from "antd";
+import RenderChart from "./renderChart";
+import * as ajax from "./services";
 
-export default class DashBoardComponent extends React.Component<
-  any
+interface iDashboardState {
+  reqParams?: object;
+  dataSource: {
+    line?: Array<{
+      x: string;
+      y: number;
+    }>;
+    bar?: Array<{
+      x: string;
+      y: number;
+    }>;
+    flipcard: {
+      sales?: number;
+      grate?: number;
+      reduce?: number;
+      customers?: number;
+    };
+  };
+}
+
+export default class DashBoard extends React.Component<
+  any,
+  iDashboardState
 > {
+  state: iDashboardState = {
+    reqParams: {},
+    dataSource: {
+      flipcard: {
+        sales: 0,
+        grate: 0,
+        reduce: 0,
+        customers: 0,
+      },
+    },
+  };
+
+  componentDidMount() {
+    this.fetchList();
+  }
+
+  fetchList = (): void => {
+    let { dataSource } = this.state;
+    ajax.getDashboard().then((res: any) => {
+      let isSuccessed: boolean = res.result;
+      if (isSuccessed) {
+        dataSource = res.data;
+      } else {
+        message.error(res.result_message);
+      }
+      this.setState({
+        dataSource,
+      });
+    });
+  };
+
   render() {
+    const { dataSource } = this.state;
+    const { line, bar, flipcard } = dataSource;
     return (
       <div>
         <Row gutter={20}>
           <Col span={6}>
-            <RenderCard
+            <RenderChart
               type="flipcard"
               options={{ title: "销售额", isMom: false }}
               data={{
                 prefix: "$",
-                value: 11.98,
+                value: flipcard.sales,
                 suffix: "亿",
               }}
             />
           </Col>
           <Col span={6}>
-            <RenderCard
+            <RenderChart
               type="flipcard"
               options={{
                 title: "销售额增长率",
                 isMom: true,
               }}
-              data={{ prefix: "up", value: 11.98 }}
+              data={{ prefix: "up", value: flipcard.grate }}
             />
           </Col>
           <Col span={6}>
-            <RenderCard
+            <RenderChart
               type="flipcard"
               options={{ title: "成本降低率", isMom: true }}
-              data={{ prefix: "down", value: 5.08 }}
+              data={{
+                prefix: "down",
+                value: flipcard.reduce,
+              }}
             />
           </Col>
           <Col span={6}>
-            <RenderCard
+            <RenderChart
               type="flipcard"
               options={{ title: "客户量", isMom: false }}
               data={{
                 prefix: "",
-                value: 11908.29,
+                value: flipcard.customers,
                 suffix: "万",
               }}
             />
           </Col>
         </Row>
         <Row gutter={20} style={{ marginTop: 20 }}>
-          <Col span={24}>
-            <RenderCard
+          <Col span={12}>
+            <RenderChart
+              type="line"
+              options={{ title: "历年趋势" }}
+              data={line}
+            />
+          </Col>
+          <Col span={12}>
+            <RenderChart
               type="bar"
-              options={{ title: "增长量" }}
-              data={[
-                { x: "类目一", y: 332 },
-                { x: "类目二", y: 233 },
-                { x: "类目三", y: 733 },
-                { x: "类目四", y: 163 },
-                { x: "类目五", y: 209 },
-              ]}
+              options={{ title: "本年度季度销售额情况" }}
+              data={bar}
             />
           </Col>
         </Row>

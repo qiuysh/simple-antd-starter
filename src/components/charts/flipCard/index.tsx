@@ -4,12 +4,6 @@ import * as React from "react";
 import { Icon, Statistic } from "antd";
 import "../style.less";
 
-enum colors {
-  default = "#333",
-  down = "#3f8600",
-  up = "#cf1322",
-}
-
 export interface iFlipCardProps {
   options: {
     title: string;
@@ -32,8 +26,10 @@ export default class FlipCard extends React.Component<
     const { options, data } = this.props;
     const { title, precision, isMom } = options;
     const { value, prefix, suffix } = data;
-    let color: string = colors[prefix];
-
+    let color: string = "#333";
+    if (isMom) {
+      color = prefix === "up" ? "#cf1322" : "#3f8600";
+    }
     return (
       <div className="flip-chart">
         <Statistic

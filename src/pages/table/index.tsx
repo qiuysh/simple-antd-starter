@@ -12,7 +12,7 @@ import {
 import * as ajax from "./services";
 import "./style.less";
 
-const statusText: object = {
+const statusText: any = {
   success: "成功",
   error: "错误",
   warning: "异常",
@@ -102,14 +102,9 @@ class TableComponent extends React.Component<
       {
         title: "状态",
         dataIndex: "status",
-        render: (text: string): JSX.Element => {
+        render: (text: any): JSX.Element => {
           return (
-            <div>
-              <Badge
-                status={text}
-                text={statusText[text]}
-              />
-            </div>
+            <Badge status={text} text={statusText[text]} />
           );
         },
       },
@@ -121,7 +116,7 @@ class TableComponent extends React.Component<
         title: "操作",
         width: 150,
         render: (
-          text: string,
+          text: any,
           record: object,
         ): JSX.Element => {
           return (

@@ -53,11 +53,12 @@ class FormComponent extends React.Component<any> {
           </FormItem>
           <Form.Item label="状态">
             {getFieldDecorator("status", {
-              initialValue: "a",
+              initialValue: "success",
             })(
               <Radio.Group>
-                <Radio value="a">正常</Radio>
-                <Radio value="b">异常</Radio>
+                <Radio value="success">成功</Radio>
+                <Radio value="warning">异常</Radio>
+                <Radio value="error">错误</Radio>
               </Radio.Group>,
             )}
           </Form.Item>

@@ -26,6 +26,7 @@ export default class Bar extends React.Component<
           forceFit>
           <Axis name="x" />
           <Axis name="y" />
+          <Tooltip />
           <Geom type="interval" position="x*y" />
         </Chart>
       </div>

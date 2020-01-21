@@ -26,7 +26,8 @@ export default class Line extends React.Component<
           forceFit>
           <Axis name="x" />
           <Axis name="y" />
-          <Geom type="interval" position="x*y" />
+          <Tooltip />
+          <Geom type="line" position="x*y" />
         </Chart>
       </div>
     );

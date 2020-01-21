@@ -7,10 +7,9 @@ export interface iProps {
 export default function Logo({
   collapsed,
 }: iProps): JSX.Element {
-  console.log(collapsed);
   return (
     <div className="logo">
-      {collapsed ? "Fire" : "Fire Hero"}
+      {collapsed ? "No" : "No Body"}
     </div>
   );
 }

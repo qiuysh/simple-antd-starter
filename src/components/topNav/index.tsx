@@ -35,6 +35,7 @@ function onLogout() {
     okText: "确认",
     cancelText: "取消",
     onOk: () => {
+      localStorage.removeItem("token");
       window.location.href = "/#/login";
     },
     onCancel() {},

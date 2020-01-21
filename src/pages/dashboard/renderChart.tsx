@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Card } from "antd";
-import { FlipCard, Bar } from "@components/charts";
+import { FlipCard, Bar, Line } from "@components/charts";
 
 interface dataArray {
   data: Array<{
@@ -42,6 +42,10 @@ function Chart({
     }
     case "bar": {
       element = <Bar options={options} data={data} />;
+      break;
+    }
+    case "line": {
+      element = <Line options={options} data={data} />;
       break;
     }
     default:

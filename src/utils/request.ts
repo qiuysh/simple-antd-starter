@@ -10,6 +10,19 @@ export default function request(
   url: string,
   options: AxiosRequestConfig = {},
 ): AxiosPromise {
+  // 请求拦截器
+  axios.interceptors.request.use(
+    config => {
+      let token = localStorage.getItem("token");
+      if (token) {
+        config.headers.Authorization = token; // 让每个请求携带token--['X-Token']为自定义key 请根据实际情况自行修改
+      }
+      return config;
+    },
+    error => {
+      Promise.reject(error);
+    },
+  );
   // 使用由库提供的配置的默认值来创建实例
   return axios({
     url,
@@ -24,7 +37,6 @@ export default function request(
     .then((res: any) => {
       const { status } = res;
       const successed: boolean = checkRspStatus(status);
-      message.destroy();
 
       if (successed) {
         return Promise.resolve({
