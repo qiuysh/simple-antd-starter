@@ -1,11 +1,14 @@
 module.exports = {
   parser:  '@typescript-eslint/parser',
   extends: [
+    'eslint:recommended',
+    'airbnb',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended'
   ],                              //使用推荐的React代码检测规范
-  plugins: ['@typescript-eslint'],
-  env:{                         
+  plugins: ['@typescript-eslint', 'react-hooks'],
+  env:{    
+    es6: true,                     
     browser: true,
     node: true,
   },

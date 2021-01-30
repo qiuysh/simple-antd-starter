@@ -28,22 +28,8 @@ module.exports = {
         test: /\.ts[x]?$/,
         include: path.join(__dirname, "../src"),
         use: [
-          "babel-loader",
           {
-            loader: "awesome-typescript-loader",
-            options: {
-              cacheDirectory: true,
-            },
-          },
-        ],
-      },
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        include: path.join(__dirname, "../src"),
-        use: [
-          {
-            loader: "source-map-loader",
+            loader: "babel-loader",
             options: {
               cacheDirectory: true,
             },
@@ -67,7 +53,14 @@ module.exports = {
             ? "style-loader"
             : MiniCssExtractPlugin.loader,
           "css-loader",
-          "less-loader",
+          {
+            loader: "less-loader", // compiles Less to CSS
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+              },
+            },
+          },
         ],
       },
       {

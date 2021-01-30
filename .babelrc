@@ -1,18 +1,24 @@
 {
   "plugins": [
-    "transform-runtime",
-    "dynamic-import-webpack",
-    ["import", { 
-      "libraryName": "antd", 
-      "libraryDirectory": "es", 
-      "style": true }
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties",
+    ["import", 
+      { 
+        "libraryName": "antd", 
+        "style": true 
+      }
     ]
   ],
   "presets": [ 
-    ["env", {
-      "targets": {
-        "browsers": ["last 2 versions", "safari >= 7"]
+    [
+      "@babel/preset-env", 
+      {
+        "targets": {
+          "browsers": ["last 2 versions", "safari >= 7"]
+        }
       }
-    }], "react" 
+    ], 
+    "@babel/preset-typescript",
+    "@babel/preset-react"
   ]
 }
