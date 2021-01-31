@@ -1,14 +1,13 @@
-/** @format */
 const merge = require("webpack-merge");
 const base = require("./base.js");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const os = require("os");
 
 module.exports = merge(base, {
   mode: "production",
-
   optimization: {
     minimizer: [
       // 用于配置 minimizers 和选项
@@ -32,15 +31,29 @@ module.exports = merge(base, {
       }),
       new OptimizeCSSAssetsPlugin({}),
     ],
+    splitChunks: {
+      minSize: 30000,
+      maxSize: 3000000,
+      chunks: "all",
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      name: true,
+      cacheGroups: {
+        vendor: {
+          name: "vendors",
+          test: "vendors",
+          priority: -1,
+        },
+      },
+    },
   },
 
   plugins: [
-    new webpack.HashedModuleIdsPlugin(), // 实现持久化缓存
-
-    new webpack.DefinePlugin({
-      __PRODUCTION: JSON.stringify(true),
+    new MiniCssExtractPlugin({
+      filename: "assets/styles/[name]_[chunkhash:8].css",
     }),
 
-    new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.HashedModuleIdsPlugin(), // 实现持久化缓存
   ],
 });

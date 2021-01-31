@@ -2,7 +2,7 @@ module.exports = {
   parser:  '@typescript-eslint/parser',
   extends: [
     'eslint:recommended',
-    'airbnb',
+    'wolin',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended'
   ],                              //使用推荐的React代码检测规范

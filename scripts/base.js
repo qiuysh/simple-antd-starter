@@ -1,4 +1,3 @@
-/** @format */
 const path = require("path");
 const webpack = require("webpack");
 const autoprefixer = require("autoprefixer");
@@ -9,17 +8,15 @@ const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
   entry: {
-    app: path.join(__dirname, "../src/index"),
+    app: path.join(__dirname, "../src/app"),
+    vendors: ["react", "react-dom", "lodash", "qs"],
   },
 
   output: {
     path: path.join(__dirname, "../dist"),
-    filename: devMode
-      ? "bundle.js"
-      : "[name].[chunkhash:8].js",
-    chunkFilename: devMode
-      ? "[name].bundle.js"
-      : "[id].chunk.[chunkhash:8].js",
+    publicPath: "/",
+    filename: devMode ? "[name].bundle.js" : "[name]_[chunkhash:8].js",
+    chunkFilename: devMode ? "[id].bundle.js" : "[id].chunk_[chunkhash:8].js",
   },
 
   module: {
@@ -71,26 +68,14 @@ module.exports = {
         ],
       },
       {
-        test: /\.(svg|woff|woff2|ttf|eot)(\?[tv]=[\d.]+)*$/,
-        exclude: /node_modules/,
-        use: ["file-loader?name=assets/fonts/[name].[ext]"],
-      },
-      {
-        test: /\.html$/,
-        use: ["raw-loader"],
-      },
-      {
         test: /\.ejs$/,
         use: ["ejs-loader"],
-      },
-      {
-        test: /\.json$/,
-        use: ["json-loader"],
       },
     ],
   },
 
   plugins: [
+
     new webpack.ContextReplacementPlugin(
       /moment[\/\\]locale$/,
       /(zh-cn).js/,
@@ -111,7 +96,6 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      title: "react_System",
       filename: "index.html",
       template: path.join(
         __dirname,
@@ -127,6 +111,7 @@ module.exports = {
         "images",
         "favicon.ico",
       ),
+      inject: false,
     }),
 
     new MiniCssExtractPlugin({
@@ -137,12 +122,9 @@ module.exports = {
 
   resolve: {
     modules: ["node_modules"],
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
+    extensions: [".ts", ".tsx", ".js", ".json"],
     alias: {
-      "@components": path.join(
-        __dirname,
-        "../src/components",
-      ),
+      "@components": path.join(__dirname, "../src/components"),
       "@pages": path.join(__dirname, "../src/pages"),
       "@utils": path.join(__dirname, "../src/utils"),
     },
