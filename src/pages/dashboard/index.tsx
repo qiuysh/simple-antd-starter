@@ -1,6 +1,6 @@
 /** @format */
 
-import * as React from "react";
+import React from "react";
 import { Row, Col, message } from "antd";
 import RenderChart from "./renderChart";
 import * as ajax from "./services";
@@ -48,7 +48,7 @@ export default class DashBoard extends React.Component<
   fetchList = (): void => {
     let { dataSource } = this.state;
     ajax.getDashboard().then((res: any) => {
-      let isSuccessed: boolean = res.result;
+      const isSuccessed: boolean = res.result;
       if (isSuccessed) {
         dataSource = res.data;
       } else {

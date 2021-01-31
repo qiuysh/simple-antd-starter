@@ -1,4 +1,5 @@
 /** @format */
+
 import axios, {
   AxiosRequestConfig,
   AxiosResponse,
@@ -13,7 +14,9 @@ export default function request(
   // 请求拦截器
   axios.interceptors.request.use(
     config => {
-      let token = localStorage.getItem("token");
+      const token: string | null = localStorage.getItem(
+        "token",
+      );
       if (token) {
         config.headers.Authorization = token; // 让每个请求携带token--['X-Token']为自定义key 请根据实际情况自行修改
       }
@@ -95,7 +98,7 @@ function checkRspStatus(status: number) {
 }
 
 function tipError(res: AxiosResponse) {
-  const status = res.status;
+  const { status } = res;
 
   switch (status) {
     case 401:

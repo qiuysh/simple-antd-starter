@@ -1,7 +1,7 @@
 /** @format */
 
-import * as React from "react";
-import { Result, Icon, Button } from "antd";
+import React from "react";
+import { Result, Button } from "antd";
 
 export default function PageNotFound(): JSX.Element {
   return (

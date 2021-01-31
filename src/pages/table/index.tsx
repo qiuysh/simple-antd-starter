@@ -1,6 +1,6 @@
 /** @format */
 
-import * as React from "react";
+import React from "react";
 import {
   Table,
   Divider,
@@ -29,7 +29,7 @@ interface iTableStates {
   };
   loading: boolean;
 }
-class TableComponent extends React.Component<
+export default class TableComponent extends React.Component<
   {},
   iTableStates
 > {
@@ -47,13 +47,13 @@ class TableComponent extends React.Component<
   }
 
   fetchList = (): void => {
-    let param: object = this.state.reqParams;
+    const { reqParams } = this.state;
     let dataSource: object = {};
     this.setState({
       loading: true,
     });
-    ajax.getPage(param).then((res: any) => {
-      let isSuccessed: boolean = res.result;
+    ajax.getPage(reqParams).then((res: any) => {
+      const isSuccessed: boolean = res.result;
       if (isSuccessed) {
         dataSource = res.data;
       } else {
@@ -71,7 +71,7 @@ class TableComponent extends React.Component<
     filters: any,
     sorter: any,
   ): void => {
-    let { reqParams } = this.state;
+    const { reqParams } = this.state;
     reqParams.page = pagination.current;
     this.setState(
       {
@@ -154,4 +154,3 @@ class TableComponent extends React.Component<
     );
   }
 }
-export default TableComponent;

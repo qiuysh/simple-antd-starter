@@ -1,7 +1,7 @@
 /** @format */
 
-import * as React from "react";
-import { Chart, Axis, Tooltip, Geom } from "bizcharts";
+import React from "react";
+import { Chart, Interval } from "bizcharts";
 
 export interface iBarProps {
   options: object;
@@ -18,18 +18,13 @@ export default class Bar extends React.Component<
   public render() {
     const { options, data } = this.props;
     return (
-      <div>
-        <Chart
-          data={data}
-          height={300}
-          padding="auto"
-          forceFit>
-          <Axis name="x" />
-          <Axis name="y" />
-          <Tooltip />
-          <Geom type="interval" position="x*y" />
-        </Chart>
-      </div>
+      <Chart
+        data={data}
+        height={300}
+        padding="auto"
+        autoFit>
+        <Interval position="x*y" />
+      </Chart>
     );
   }
 }

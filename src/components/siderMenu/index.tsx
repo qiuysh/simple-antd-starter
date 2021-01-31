@@ -1,9 +1,11 @@
 /** @format */
 
-import * as React from "react";
-import { Menu, Icon, Layout } from "antd";
+import React, { useEffect } from "react";
+import { Menu, Layout } from "antd";
+import CustomIcon from "@components/customIcon";
 import Logo from "../logo";
 import * as ajax from "../../services";
+
 const { Sider } = Layout;
 
 interface iProps {
@@ -18,7 +20,7 @@ export default function SiderMenu({
   const { location, push } = history;
   const { pathname } = location;
   // 初始化
-  let initActiveKey: string = pathname.replace("/", "");
+  const initActiveKey: string = pathname.replace("/", "");
 
   const [activeKey, setActive] = React.useState(
     initActiveKey,
@@ -33,7 +35,7 @@ export default function SiderMenu({
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     QueryMenu();
   }, []);
 
@@ -49,7 +51,11 @@ export default function SiderMenu({
   };
 
   return (
-    <Sider trigger={null} collapsible collapsed={collapsed}>
+    <Sider
+      className="yux-sider"
+      trigger={null}
+      collapsible
+      collapsed={collapsed}>
       <Logo collapsed={collapsed} />
       <Menu
         mode="inline"
@@ -60,7 +66,7 @@ export default function SiderMenu({
           (item: any): JSX.Element => {
             return (
               <Menu.Item key={item.code}>
-                <Icon type={item.icon} />
+                <CustomIcon type={item.icon} />
                 <span>{item.name}</span>
               </Menu.Item>
             );

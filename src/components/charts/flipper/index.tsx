@@ -1,7 +1,11 @@
 /** @format */
 
-import * as React from "react";
-import { Icon, Statistic } from "antd";
+import React from "react";
+import { Statistic } from "antd";
+import {
+  RiseOutlined,
+  FallOutlined,
+} from "@ant-design/icons";
 import "../style.less";
 
 export interface iFlipCardProps {
@@ -41,13 +45,11 @@ export default class FlipCard extends React.Component<
           }}
           prefix={
             isMom ? (
-              <Icon
-                type={
-                  isMom && prefix === "up"
-                    ? "arrow-up"
-                    : "arrow-down"
-                }
-              />
+              prefix === "up" ? (
+                <RiseOutlined />
+              ) : (
+                <FallOutlined />
+              )
             ) : (
               prefix
             )

@@ -1,7 +1,7 @@
 /** @format */
 
-import * as React from "react";
-import { Chart, Axis, Tooltip, Geom } from "bizcharts";
+import React from "react";
+import { Chart, LineAdvance } from "bizcharts";
 
 export interface iLineProps {
   options: object;
@@ -23,11 +23,13 @@ export default class Line extends React.Component<
           data={data}
           height={300}
           padding="auto"
-          forceFit>
-          <Axis name="x" />
-          <Axis name="y" />
-          <Tooltip />
-          <Geom type="line" position="x*y" />
+          autoFit>
+          <LineAdvance
+            shape="smooth"
+            point
+            area
+            position="x*y"
+          />
         </Chart>
       </div>
     );

@@ -1,8 +1,8 @@
 /** @format */
 
-import * as React from "react";
+import React from "react";
 import { Card } from "antd";
-import { FlipCard, Bar, Line } from "@components/charts";
+import { Flipper, Bar, Line } from "@components/charts";
 
 interface dataArray {
   data: Array<{
@@ -37,7 +37,7 @@ function Chart({
   let element: JSX.Element = <div>暂无图表</div>;
   switch (type) {
     case "flipcard": {
-      element = <FlipCard options={options} data={data} />;
+      element = <Flipper options={options} data={data} />;
       break;
     }
     case "bar": {
@@ -53,11 +53,11 @@ function Chart({
   return element;
 }
 
-export default function RenderCard(params: iChartProps) {
+export default (params: iChartProps) => {
   const { type, options } = params;
   return (
     <Card title={type != "flipcard" ? options.title : ""}>
       <Chart {...params} />
     </Card>
   );
-}
+};

@@ -3,12 +3,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ConfigProvider } from "antd";
-import BasicRouter from "./router";
 import zhCN from "antd/es/locale/zh_CN";
+import RootRouter from "./routers";
 
 ReactDOM.render(
   <ConfigProvider locale={zhCN}>
-    <BasicRouter />
+    <RootRouter />
   </ConfigProvider>,
-  document.getElementById("app"),
+  document.getElementById("root"),
 );

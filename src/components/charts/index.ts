@@ -1,6 +1,7 @@
 /** @format */
+
 import Bar from "./bar";
 import Line from "./line";
-import FlipCard from "./flipCard";
+import Flipper from "./flipper";
 
-export { Bar, Line, FlipCard };
+export { Bar, Line, Flipper };

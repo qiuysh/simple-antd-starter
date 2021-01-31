@@ -1,9 +1,16 @@
 /** @format */
 
-import * as React from "react";
-import { Icon, Layout, Modal } from "antd";
+import React from "react";
+import { Layout, Modal } from "antd";
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import "./style.less";
+
 const { Header } = Layout;
-const confirm = Modal.confirm;
+const { confirm } = Modal;
 
 interface iProps {
   collapsed: boolean;
@@ -15,15 +22,19 @@ export default function TopNav({
   changeCollapse,
 }: iProps) {
   return (
-    <Header style={{ padding: "0 24px" }}>
-      <Icon
+    <Header className="yux-header">
+      <a
         className="trigger"
-        type={collapsed ? "menu-unfold" : "menu-fold"}
-        onClick={() => changeCollapse()}
-      />
-      <div className="logout" onClick={onLogout}>
-        <Icon type="user" />
-      </div>
+        onClick={() => changeCollapse()}>
+        {collapsed ? (
+          <MenuFoldOutlined />
+        ) : (
+          <MenuUnfoldOutlined />
+        )}
+      </a>
+      <a className="logout" onClick={onLogout}>
+        <UserOutlined />
+      </a>
     </Header>
   );
 }
@@ -36,7 +47,7 @@ function onLogout() {
     cancelText: "取消",
     onOk: () => {
       localStorage.removeItem("token");
-      window.location.href = "/#/login";
+      window.location.href = "/login";
     },
     onCancel() {},
   });

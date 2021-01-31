@@ -1,61 +1,65 @@
 /** @format */
 
-import * as React from "react";
+import React from "react";
 import {
   Form,
   Input,
-  Icon,
   Checkbox,
   Button,
   message,
 } from "antd";
+import {
+  UserOutlined,
+  KeyOutlined,
+} from "@ant-design/icons";
 import * as ajax from "./services";
 import "./login.less";
-const FormItem = Form.Item;
 
-export interface iLoginProps {
+type ILoginProps = {
   history: any;
-  form: any;
-}
+};
 
-const Login = ({
-  history,
-  form,
-}: iLoginProps): JSX.Element => {
-  const { getFieldDecorator } = form;
+const Login: React.FC<ILoginProps> = props => {
+  const { history } = props;
+  function handleSubmit(value: any): void {
+    ajax.login(value).then((res: any) => {
+      const isLoginSuccess: Boolean = res.result;
+      if (isLoginSuccess) {
+        localStorage.setItem("token", res.token);
+        history.push("/dashboard");
+      } else {
+        message.error(res.result_message);
+      }
+    });
+  }
+
   return (
     <div className="login-wrapper">
       <div className="login-form">
         <h1>No Body</h1>
-        <Form>
-          <FormItem>
-            {getFieldDecorator("username")(
-              <Input
-                prefix={
-                  <Icon
-                    type="user"
-                    style={{ color: "rgba(0,0,0,.25)" }}
-                  />
-                }
-                placeholder="账号"
-              />,
-            )}
-          </FormItem>
-          <FormItem>
-            {getFieldDecorator("password")(
-              <Input
-                prefix={
-                  <Icon
-                    type="lock"
-                    style={{ color: "rgba(0,0,0,.25)" }}
-                  />
-                }
-                type="password"
-                placeholder="密码"
-              />,
-            )}
-          </FormItem>
-          <FormItem>
+        <Form onFinish={e => handleSubmit(e)}>
+          <Form.Item name="username">
+            <Input
+              prefix={
+                <UserOutlined
+                  style={{ color: "rgba(0,0,0,.25)" }}
+                />
+              }
+              placeholder="账号"
+            />
+          </Form.Item>
+          <Form.Item name="password">
+            <Input
+              prefix={
+                <KeyOutlined
+                  style={{ color: "rgba(0,0,0,.25)" }}
+                />
+              }
+              type="password"
+              placeholder="密码"
+            />
+          </Form.Item>
+          <Form.Item>
             {/* <Checkbox>记住密码</Checkbox>
             <a className="login-form-forgot" href="">
               忘记密码
@@ -63,34 +67,15 @@ const Login = ({
             <Button
               type="primary"
               htmlType="submit"
-              className="btn btn-priame"
-              onClick={e => handleSubmit(e, history, form)}>
+              className="btn btn-priame">
               登录
             </Button>
             {/* <a>注册</a> */}
-          </FormItem>
+          </Form.Item>
         </Form>
       </div>
     </div>
   );
 };
 
-function handleSubmit(
-  e: React.FormEvent,
-  history: any,
-  form: any,
-) {
-  e.preventDefault();
-  let param: any = form.getFieldsValue();
-  ajax.login(param).then((res: any) => {
-    let isLoginSuccess: Boolean = res.result;
-    if (isLoginSuccess) {
-      localStorage.setItem("token", res.token);
-      history.push("/dashboard");
-    } else {
-      message.error(res.result_message);
-    }
-  });
-}
-
-export default Form.create()(Login);
+export default Login;
