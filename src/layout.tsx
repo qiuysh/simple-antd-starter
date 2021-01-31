@@ -1,13 +1,15 @@
 /** @format */
 
-import * as React from "react";
+import React, { Fragment } from "react";
 import { Layout } from "antd";
 import { withRouter } from "react-router-dom";
 import DocumentTitle from "react-document-title";
 import TopNav from "@components/topNav";
 import SiderMenu from "@components/siderMenu";
 import Footer from "@components/footer";
-import "./assets/css/index.less";
+import ErrorBoundary from "@components/errorBoundary";
+import "./assets/styles/global.less";
+
 const { Content } = Layout;
 
 const TITLE: string = "No Body";
@@ -43,7 +45,7 @@ class BaseLayout extends React.Component<
     const { collapsed } = this.state;
     const { children, history } = this.props;
     return (
-      <React.Fragment>
+      <>
         <DocumentTitle title={TITLE}>
           <Layout>
             <SiderMenu
@@ -60,13 +62,15 @@ class BaseLayout extends React.Component<
                   margin: "24px 24px 0",
                   minHeight: this.getViewPortHeight() - 154,
                 }}>
-                {children}
+                <ErrorBoundary location={location}>
+                  {children}
+                </ErrorBoundary>
               </Content>
               <Footer />
             </Layout>
           </Layout>
         </DocumentTitle>
-      </React.Fragment>
+      </>
     );
   }
 }

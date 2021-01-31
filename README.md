@@ -31,10 +31,10 @@ npm start
 ├── src
 │   ├── assets
 │   ├── components
-│   ├── index.tsx
+│   ├── app.tsx
 │   ├── layout.tsx
 │   ├── pages
-│   ├── router.tsx
+│   ├── routers.tsx
 │   ├── template.ejs
 │   └── utils
 └── tsconfig.json
