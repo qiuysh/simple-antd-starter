@@ -10,9 +10,9 @@ import {
 } from "react-router-dom";
 
 // 基本布局
-const BaseLayout = lazy(() => import("./layout"));
+import BaseLayout from "./layout";
+import Login from "./pages/login";
 
-const Login = lazy(() => import("./pages/login"));
 const Forms = lazy(() => import("./pages/form"));
 const DashBoard = lazy(() => import("./pages/dashboard"));
 const Tables = lazy(() => import("./pages/table"));
@@ -33,10 +33,10 @@ const loading: JSX.Element = (
 // 根路由
 const BasicRouter = (): JSX.Element => (
   <Router>
-    <Suspense fallback={loading}>
-      <Switch>
-        <Route path="/login" exact component={Login} />
-        <BaseLayout>
+    <Switch>
+      <Route path="/login" exact component={Login} />
+      <BaseLayout>
+        <Suspense fallback={loading}>
           <Switch>
             <Route
               path="/dashboard"
@@ -52,9 +52,9 @@ const BasicRouter = (): JSX.Element => (
             />
             <Redirect to="/exception/404" />
           </Switch>
-        </BaseLayout>
-      </Switch>
-    </Suspense>
+        </Suspense>
+      </BaseLayout>
+    </Switch>
   </Router>
 );
 

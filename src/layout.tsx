@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { Fragment } from "react";
+import React from "react";
 import { Layout } from "antd";
 import { withRouter } from "react-router-dom";
 import DocumentTitle from "react-document-title";
