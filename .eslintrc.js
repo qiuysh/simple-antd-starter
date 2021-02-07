@@ -56,6 +56,7 @@ module.exports = {
     "import/newline-after-import": "warn",
     "import/prefer-default-export": "warn",
     "import/order": "warn",
+    "import/no-unresolved": "warn",
     "react/sort-comp": "warn",
     "class-methods-use-this": "warn",
     "react/jsx-wrap-multilines": [

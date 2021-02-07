@@ -29,6 +29,7 @@ module.exports = merge(base, {
           keep_fnames: false,
         },
       }),
+
       new OptimizeCSSAssetsPlugin({}),
     ],
     splitChunks: {

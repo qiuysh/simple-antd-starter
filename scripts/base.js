@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const autoprefixer = require("autoprefixer");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin")
 
 const devMode = process.env.NODE_ENV !== "production";
 
@@ -115,9 +116,11 @@ module.exports = {
     }),
 
     new MiniCssExtractPlugin({
-      filename: "[name].[hash:8].css",
-      chunkFilename: "[name].[hash:8].css",
+      filename: "[name].[chunkhash:8].css",
+      chunkFilename: "[name].[chunkhash:8].css",
     }),
+
+    new HardSourceWebpackPlugin(),
   ],
 
   resolve: {

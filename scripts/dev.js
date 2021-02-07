@@ -7,9 +7,10 @@ const apiMocker = require("mocker-api");
 module.exports = merge(base, {
   mode: "development",
 
-  devtool: "inline-source-map",
+  devtool: "cheap-module-eval-source-map",
 
   plugins: [
+    
     new webpack.HotModuleReplacementPlugin(),
   ],
 
@@ -19,6 +20,7 @@ module.exports = merge(base, {
     port: 3001,
     historyApiFallback: true,
     hot: true,
+    inline: true,
     before: function(app) {
       apiMocker(app, path.resolve("./mock/index.js"), {
         proxy: {
