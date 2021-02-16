@@ -10,7 +10,7 @@ import {
 } from "antd";
 import {
   UserOutlined,
-  KeyOutlined,
+  LockOutlined,
 } from "@ant-design/icons";
 import * as ajax from "./services";
 import "./login.less";
@@ -36,7 +36,7 @@ const Login: React.FC<ILoginProps> = props => {
   return (
     <div className="login-wrapper">
       <div className="login-form">
-        <h1>No Body</h1>
+        <h1>Wolin 3C</h1>
         <Form onFinish={e => handleSubmit(e)}>
           <Form.Item name="username">
             <Input
@@ -51,7 +51,7 @@ const Login: React.FC<ILoginProps> = props => {
           <Form.Item name="password">
             <Input
               prefix={
-                <KeyOutlined
+                <LockOutlined
                   style={{ color: "rgba(0,0,0,.25)" }}
                 />
               }
@@ -67,7 +67,8 @@ const Login: React.FC<ILoginProps> = props => {
             <Button
               type="primary"
               htmlType="submit"
-              className="btn btn-priame">
+              className="btn btn-priame"
+              block>
               登录
             </Button>
             {/* <a>注册</a> */}

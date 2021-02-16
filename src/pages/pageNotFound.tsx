@@ -3,7 +3,7 @@
 import React from "react";
 import { Result, Button } from "antd";
 
-export default function PageNotFound(): JSX.Element {
+const PageNotFound: React.FC = () => {
   return (
     <Result
       status="404"
@@ -12,4 +12,6 @@ export default function PageNotFound(): JSX.Element {
       extra={<Button type="primary">返回主页</Button>}
     />
   );
-}
+};
+
+export default PageNotFound;

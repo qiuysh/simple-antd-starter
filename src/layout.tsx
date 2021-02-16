@@ -4,6 +4,7 @@ import React from "react";
 import { Layout } from "antd";
 import { withRouter } from "react-router-dom";
 import DocumentTitle from "react-document-title";
+import classnames from "classnames";
 import TopNav from "@components/topNav";
 import SiderMenu from "@components/siderMenu";
 import Footer from "@components/footer";
@@ -12,7 +13,7 @@ import "./assets/styles/global.less";
 
 const { Content } = Layout;
 
-const TITLE: string = "No Body";
+const TITLE: string = "wolin 3C";
 
 type iLayoutStates = {
   collapsed: boolean;
@@ -47,12 +48,15 @@ class BaseLayout extends React.Component<
     return (
       <>
         <DocumentTitle title={TITLE}>
-          <Layout>
+          <Layout
+            className={classnames("", {
+              "layout-fixed": true,
+            })}>
             <SiderMenu
               collapsed={collapsed}
               history={history}
             />
-            <Layout>
+            <Layout className="yux-content">
               <TopNav
                 collapsed={collapsed}
                 changeCollapse={this.changeCollapse}

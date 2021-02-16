@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect } from "react";
+import React, { useEffect, FC } from "react";
 import { Menu, Layout } from "antd";
 import CustomIcon from "@components/customIcon";
 import Logo from "../logo";
@@ -13,10 +13,8 @@ interface iProps {
   collapsed: boolean;
 }
 
-export default function SiderMenu({
-  history,
-  collapsed,
-}: iProps): JSX.Element {
+const SiderMenu: FC<iProps> = props => {
+  const { history, collapsed } = props;
   const { location, push } = history;
   const { pathname } = location;
   // 初始化
@@ -75,4 +73,6 @@ export default function SiderMenu({
       </Menu>
     </Sider>
   );
-}
+};
+
+export default SiderMenu;

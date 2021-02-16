@@ -5,6 +5,14 @@ html {
   font-size: 14px;
 }
 
+.f-fl {
+  float: left;
+}
+
+.f-fr {
+  float: right;
+}
+
 .icon {
   width: 1em;
   height: 1em;
@@ -29,12 +37,24 @@ html {
   .action {
     font-size: 1.5rem;
   }
-  .logout {
-    display: block;
-    width: 1.75rem;
-    height: 4rem;
-    float: right;
-    text-align: center;
+}
+
+.layout-fixed {
+  .yux-sider {
+    position: sticky;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 12;
+  }
+  .yux-content {
+    width: fit-content;
+    .yux-header {
+      position: sticky;
+      top: 0;
+      right: 0;
+      z-index: 10;
+    }
   }
 }
 
