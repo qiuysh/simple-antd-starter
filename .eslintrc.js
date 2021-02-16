@@ -6,7 +6,7 @@ module.exports = {
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended'
   ],                              //使用推荐的React代码检测规范
-  plugins: ['@typescript-eslint', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'react-hooks', 'jest'],
   env:{    
     es6: true,                     
     browser: true,
@@ -57,6 +57,7 @@ module.exports = {
     "import/prefer-default-export": "warn",
     "import/order": "warn",
     "import/no-unresolved": "warn",
+    "import/no-extraneous-dependencies": "off",
     "react/sort-comp": "warn",
     "class-methods-use-this": "warn",
     "react/jsx-wrap-multilines": [

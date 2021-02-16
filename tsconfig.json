@@ -7,8 +7,8 @@
     "target": "es5", // 编译成 ES2015 (Babel 将做剩下的事情)
     "baseUrl": ".", // 可以相对这个目录 import 文件
     "sourceMap": true, // 使 TypeScript 生成 sourcemaps
-    "outDir": "dist", // 构建输出目录 (因为我们大部分时间都在使用 Webpack，所以不太相关)
-    "jsx": "react", // 开启 JSX 模式, 但是 "preserve" 告诉 TypeScript 不要转换它(我们将使用 Babel)
+    "outDir": "dist", 
+    "jsx": "react", 
     "strict": true,
     "moduleResolution": "node",
     "noImplicitAny": true,
@@ -18,6 +18,10 @@
       "@components/*": ["./src/components/*"],
       "@utils/*": ["./src/utils/*"]
     },
+    "types": [
+      "node",
+      "jest",
+    ],
     "lib": [
       "es6",
       "dom"

@@ -97,6 +97,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
+      title: "wolin 3C",
       filename: "index.html",
       template: path.join(
         __dirname,
