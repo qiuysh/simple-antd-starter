@@ -8,3 +8,4 @@ declare module "*.less" {
 declare module "classnames";
 declare module "enzyme";
 declare module "enzyme-adapter-react-16";
+declare module "lodash/isEqual";

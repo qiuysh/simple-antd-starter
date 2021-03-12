@@ -104,6 +104,7 @@ function tipError(res: AxiosResponse) {
     case 401:
       // storage.clear();
       message.error("登录过期，请重新登录");
+      window.location.href = "/login";
       break;
 
     case 400:

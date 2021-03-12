@@ -13,7 +13,7 @@ const { Header } = Layout;
 
 interface iProps {
   collapsed: boolean;
-  changeCollapse: () => void;
+  changeCollapse: (collapsed: boolean) => void;
 }
 
 const TopNav: FC<iProps> = props => {
@@ -22,7 +22,7 @@ const TopNav: FC<iProps> = props => {
     <Header className="yux-header">
       <a
         className="trigger"
-        onClick={() => changeCollapse()}>
+        onClick={() => changeCollapse(!collapsed)}>
         {collapsed ? (
           <MenuFoldOutlined />
         ) : (

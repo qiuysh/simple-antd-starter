@@ -53,7 +53,7 @@ function Chart({
   return element;
 }
 
-export default (params: iChartProps) => {
+const RenderChart: React.FC<iChartProps> = params => {
   const { type, options } = params;
   return (
     <Card title={type != "flipcard" ? options.title : ""}>
@@ -61,3 +61,5 @@ export default (params: iChartProps) => {
     </Card>
   );
 };
+
+export default RenderChart;

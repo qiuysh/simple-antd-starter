@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { FC } from "react";
-import { Modal, Avatar, Menu } from "antd";
+import { Modal, Avatar, Menu, Switch } from "antd";
 import {
   BellOutlined,
   UserOutlined,
@@ -23,11 +23,30 @@ const UseBar: FC<{}> = () => {
           <BellOutlined />
         </a>
       </Menu.Item>
+      <Menu.Item>
+        <a className="use-item message">
+          <Switch
+            size="small"
+            onChange={onChange}
+            checkedChildren="亮"
+            unCheckedChildren="暗"
+            defaultChecked
+          />
+        </a>
+      </Menu.Item>
     </Menu>
   );
 };
 
 export default UseBar;
+
+function onChange(checked: boolean): void {
+  const htmlNode: any = document.querySelector("html");
+  htmlNode.setAttribute(
+    "ui-theme-mode",
+    checked ? "light" : "dark",
+  );
+}
 
 function onLogout() {
   confirm({

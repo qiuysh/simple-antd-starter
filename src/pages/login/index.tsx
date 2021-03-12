@@ -25,7 +25,7 @@ const Login: React.FC<ILoginProps> = props => {
     ajax.login(value).then((res: any) => {
       const isLoginSuccess: Boolean = res.result;
       if (isLoginSuccess) {
-        localStorage.setItem("token", res.token);
+        localStorage.setItem("token", res.data.token);
         history.push("/dashboard");
       } else {
         message.error(res.result_message);

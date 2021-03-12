@@ -1,9 +1,4 @@
 /** @format */
-
-import React from "react";
-import { Result } from "antd";
-import isEqual from "lodash/isEqual";
-
 /**
  * @description 错误边界捕捉组件
  * @author wulin
@@ -12,32 +7,32 @@ import isEqual from "lodash/isEqual";
  * @class ErrorBoundary
  * @extends {React.Component<any>}
  */
-interface IProps {
-  location: unknown;
-  children: unknown;
-}
+import React from "react";
+import { Result } from "antd";
+import isEqual from "lodash/isEqual";
+
 interface IStates {
   hasError: boolean;
 }
 export default class ErrorBoundary extends React.Component<
-  IProps,
+  any,
   IStates
 > {
-  constructor(props: IProps) {
-    super(props);
-    this.state = { hasError: false };
-  }
+  state = { hasError: false };
 
   static getDerivedStateFromError() {
     return { hasError: true };
   }
 
-  componentDidUpdate(prevProps: IProps) {
+  componentDidUpdate(prevProps: { location: any }) {
     const { hasError } = this.state;
     const { location } = this.props;
     if (
       hasError &&
-      !isEqual(location, prevProps.location)
+      !isEqual(
+        location.pathname,
+        prevProps.location.pathname,
+      )
     ) {
       this.setState({
         hasError: false,
@@ -55,8 +50,13 @@ export default class ErrorBoundary extends React.Component<
     const { children } = this.props;
     if (hasError) {
       // 你可以自定义降级后的 UI 并渲染
-
-      return <Result />;
+      return (
+        <Result
+          status="error"
+          title="程序出错"
+          subTitle="请联系技术支持！"
+        />
+      );
     }
 
     return children;

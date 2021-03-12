@@ -5,7 +5,7 @@ const delay = require("mocker-api/utils/delay");
 const noProxy = process.env.NO_PROXY === "true";
 
 const proxy = {
-  "POST /api/v1/login": (req, res) => {
+  "POST /mock/api/v1/login": (req, res) => {
     const { username, password } = req.body;
     let resData = {
       result: false,
@@ -24,7 +24,7 @@ const proxy = {
     }
     res.send(Mock.mock(resData));
   },
-  "GET /api/v1/navigation/list": (req, res) => {
+  "GET /mock/api/v1/navigation/list": (req, res) => {
     res.send(
       Mock.mock({
         data: [
@@ -56,7 +56,7 @@ const proxy = {
       }),
     );
   },
-  "GET /api/v1/dashboard/list": (req, res) => {
+  "GET /mock/api/v1/dashboard/list": (req, res) => {
     res.send(
       Mock.mock({
         data: {
@@ -125,7 +125,7 @@ const proxy = {
       }),
     );
   },
-  "GET /api/v1/table/list": (req, res) => {
+  "GET /mock/api/v1/table/list": (req, res) => {
     res.send(
       Mock.mock({
         data: {

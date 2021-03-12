@@ -11,3 +11,13 @@ export function isLogined(nextState: any, replace: any) {
 export function loggedIn() {
   return !!localStorage.token;
 }
+
+/**
+ * 获取内容高度
+ */
+export function getViewPortHeight() {
+  return Math.max(
+    document.documentElement.clientHeight,
+    window.innerHeight || 0,
+  );
+}

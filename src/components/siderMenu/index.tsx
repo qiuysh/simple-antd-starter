@@ -4,47 +4,63 @@ import React, { useEffect, FC } from "react";
 import { Menu, Layout } from "antd";
 import CustomIcon from "@components/customIcon";
 import Logo from "../logo";
-import * as ajax from "../../services";
 
 const { Sider } = Layout;
 
 interface iProps {
   history: any;
   collapsed: boolean;
+  menuList: Array<{ [key: string]: any }>;
+}
+
+interface iMenuProps {
+  id: number;
+  pid: number;
+  name: string;
+  icon: string;
+  url: string;
+  code: string;
+  [key: string]: any;
 }
 
 const SiderMenu: FC<iProps> = props => {
-  const { history, collapsed } = props;
+  const { history, collapsed, menuList } = props;
   const { location, push } = history;
   const { pathname } = location;
+  const [activeKey, setActive] = React.useState<
+    string | null
+  >();
+
+  useEffect(() => {
+    initialActiveKey();
+  }, []);
+
   // 初始化
-  const initActiveKey: string = pathname.replace("/", "");
-
-  const [activeKey, setActive] = React.useState(
-    initActiveKey,
-  );
-  const [menuList, setData] = React.useState([]);
-
-  // 获取导航菜单列表
-  const QueryMenu = async () => {
-    const res: any = await ajax.getNavigation();
-    if (res.result) {
-      setData(res.data);
+  const initialActiveKey = (): void => {
+    if (menuList && menuList.length) {
+      const firstActiveMenu:
+        | iMenuProps
+        | undefined
+        | object =
+        pathname === "/"
+          ? menuList[0]
+          : {
+              code: pathname.replace("/", ""),
+            };
+      setActive(firstActiveMenu.code);
     }
   };
 
-  useEffect(() => {
-    QueryMenu();
-  }, []);
-
   const handleClick = (e: any): void => {
     const { key } = e;
-    const targetMenu: any = menuList.find(
+    const targetMenu:
+      | iMenuProps
+      | undefined = menuList.find(
       (o: any) => key === o.code,
     );
     if (targetMenu) {
-      setActive(targetMenu.code);
-      push(targetMenu.path);
+      setActive(key);
+      push(targetMenu.url);
     }
   };
 

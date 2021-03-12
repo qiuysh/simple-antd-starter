@@ -25,7 +25,7 @@ module.exports = merge(base, {
     before: function(app) {
       apiMocker(app, path.resolve("./mock/index.js"), {
         proxy: {
-          "/api/v1/**": "http://127.0.0.1:3001",
+          "/mock/api/v1/**": "http://127.0.0.1:3001",
         },
         secure: false,
         changeHost: true,
@@ -34,7 +34,7 @@ module.exports = merge(base, {
     proxy: [
       {
         path: "/api/v1/**",
-        target: "http://127.0.0.1:3001",
+        target: "http://127.0.0.1:8854",
       },
     ],
   },

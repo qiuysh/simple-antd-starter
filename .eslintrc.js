@@ -70,6 +70,7 @@ module.exports = {
     "react/no-unused-state": "warn",
     "react/state-in-constructor": "warn",
     "react/prop-types": "warn",
+    "react-hooks/exhaustive-deps": "warn",
     "jsx-a11y/no-static-element-interactions": "warn"
   }
 };
