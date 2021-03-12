@@ -17,14 +17,8 @@ const { Content } = Layout;
 
 const TITLE: string = "wolin 3C";
 
-interface iLayoutProps {
-  history: any;
-  children: any;
-  [key: string]: any;
-}
-
-const BaseLayout: React.FC<iLayoutProps> = props => {
-  const { children, history } = props;
+const BaseLayout: React.FC<any> = props => {
+  const { children, history, location } = props;
   const [collapsed, changeCollapse] = useState<boolean>(
     false,
   );
