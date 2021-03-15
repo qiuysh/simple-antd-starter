@@ -70,8 +70,8 @@ async function findByUser(user) {
 async function findUserByPage({page, size}) {
   const result = await User.findAndCountAll({
     where: {},
-    limit: size,
-    offset: size * (page - 1)
+    limit: +size,
+    offset: +size * (+page - 1)
   });
   return result;
 }

@@ -2,9 +2,14 @@ const crypto = require('crypto');
 const tokenUtils = require('../utils/token');
 const userModel = require('../models/user');
 
+/**
+ * 登录
+ * @param {*} ctx 
+ * @param {*} next 
+ */
 const login = async (ctx, next) => {
-  let { username, password } = ctx.request.body;
-  let user = await userModel.findByUser(username);
+  const { username, password } = ctx.request.body;
+  const user = await userModel.findByUser(username);
   if (user && username === user.name && password === user.password) {
     const token = tokenUtils.generateToken({uid: user.id, username });
     ctx.body = {
@@ -22,6 +27,11 @@ const login = async (ctx, next) => {
   }
 };
 
+/**
+ * 登出
+ * @param {*} ctx 
+ * @param {*} next 
+ */
 const logout = async (ctx, next) => {
   ctx.header['authorization'] = null;
   ctx.body = {

@@ -18,7 +18,7 @@ export default class ErrorBoundary extends React.Component<
   any,
   IStates
 > {
-  state = { hasError: false };
+  state: IStates = { hasError: false };
 
   static getDerivedStateFromError() {
     return { hasError: true };

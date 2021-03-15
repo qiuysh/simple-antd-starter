@@ -6,7 +6,6 @@ import {
   Divider,
   PageHeader,
   Button,
-  message,
   Badge,
 } from "antd";
 import { PaginationProps } from "antd/es/pagination";
@@ -107,7 +106,10 @@ const TableComponent: React.FC<any> = props => {
     changeStatusLoading(true);
     const res: any = await ajax.getPage(reqParams);
     if (res.result) {
-      dataSource = res.data;
+      dataSource = {
+        data: res.data.rows,
+        total: res.data.count,
+      };
     }
     getDataSource(dataSource);
     changeStatusLoading(false);
