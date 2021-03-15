@@ -108,7 +108,7 @@ function tipError(res: AxiosResponse) {
       break;
 
     case 400:
-      message.error("请求错误，请刷新重试");
+      message.error("请求错误，请检查参数");
       break;
 
     default:

@@ -19,10 +19,12 @@ server.use((ctx, next) => {     // 如果是携带了token的请求,解析这个
     const authorization = ctx.header['authorization'];  // 获取jwt
     if (authorization) {
       let token = authorization.split(' ')[1]
-      if(token && tokenUtils.getTokenRenewStatus(token)){
+      if(token && !tokenUtils.getTokenRenewStatus(token)){
+        let newToken = tokenUtils.generateToken(token);
+        console.log("newToken", newToken)
         //设置header
         ctx.set({
-          authorization: tokenUtils.generateToken(token)
+          authorization: newToken
         })
       }
     }
