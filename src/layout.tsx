@@ -14,7 +14,7 @@ import SiderMenu from "@components/siderMenu";
 import Footer from "@components/footer";
 import ErrorBoundary from "@components/errorBoundary";
 import { getViewPortHeight } from "@utils/util";
-import { initialState, reducer } from "./stores";
+import { initialState, globalReducer } from "./stores";
 import * as ajax from "./services";
 import "./assets/styles/global.less";
 
@@ -28,7 +28,7 @@ const BaseLayout: React.FC<any> = props => {
     false,
   );
   const [state, dispatch] = useReducer(
-    reducer,
+    globalReducer,
     initialState,
   );
   const { menuList } = state as GLOBAL.storeProps;

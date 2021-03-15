@@ -6,7 +6,7 @@ export const initialState: GLOBAL.storeProps = {
   menuList: [],
 };
 
-export const reducer = (
+export const globalReducer = (
   state: any,
   action: { type: string; payload: { [key: string]: any } },
 ) => {
