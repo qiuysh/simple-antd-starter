@@ -1,6 +1,10 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  useReducer,
+} from "react";
 import { Layout } from "antd";
 import { withRouter } from "react-router-dom";
 import DocumentTitle from "react-document-title";
@@ -10,6 +14,7 @@ import SiderMenu from "@components/siderMenu";
 import Footer from "@components/footer";
 import ErrorBoundary from "@components/errorBoundary";
 import { getViewPortHeight } from "@utils/util";
+import { initialState, reducer } from "./stores";
 import * as ajax from "./services";
 import "./assets/styles/global.less";
 
@@ -22,9 +27,11 @@ const BaseLayout: React.FC<any> = props => {
   const [collapsed, changeCollapse] = useState<boolean>(
     false,
   );
-  const [menuList, setData] = useState<
-    Array<{ [key: string]: any }>
-  >([]);
+  const [state, dispatch] = useReducer(
+    reducer,
+    initialState,
+  );
+  const { menuList } = state as GLOBAL.storeProps;
 
   useEffect(() => {
     QueryMenu();
@@ -34,7 +41,10 @@ const BaseLayout: React.FC<any> = props => {
   const QueryMenu = async () => {
     const res: any = await ajax.getNavigation();
     if (res.result) {
-      setData(res.data);
+      dispatch({
+        type: "global/menus",
+        payload: res.data,
+      });
     }
   };
 

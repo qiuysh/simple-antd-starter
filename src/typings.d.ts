@@ -9,3 +9,11 @@ declare module "classnames";
 declare module "enzyme";
 declare module "enzyme-adapter-react-16";
 declare module "lodash/isEqual";
+declare module "immutability-helper-x";
+
+// 全局
+declare namespace GLOBAL {
+  interface storeProps {
+    menuList: Array<{ [key: string]: any }>;
+  }
+}
