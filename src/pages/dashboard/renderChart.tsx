@@ -4,20 +4,20 @@ import React from "react";
 import { Card } from "antd";
 import { Flipper, Bar, Line } from "@components/charts";
 
-interface dataArray {
+type dataArray = {
   data: Array<{
     x: string;
     y: number;
   }>;
-}
+};
 
-interface dataObject {
+type dataObject = {
   data: {
     value: number;
     prefix?: string;
     suffix?: string;
   };
-}
+};
 
 type iChartProps = {
   type: string;
