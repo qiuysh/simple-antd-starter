@@ -3,7 +3,11 @@
     [
       "@babel/plugin-transform-runtime",
       {
-        "corejs": 3 // 指定 runtime-corejs 的版本3
+        "corejs": {
+          "version": 3,
+          "proposals": true
+        }, // 指定 runtime-corejs 的版本3
+        "useESModules": true
       }
     ],
     "@babel/plugin-proposal-class-properties",
@@ -19,10 +23,10 @@
     [
       "@babel/preset-env", 
       {
-        "useBuiltIns": "usage", // polyfill 按需加载
         "targets": {
           "browsers": ["last 2 versions", "safari >= 7"]
-        }
+        },
+        "modules": false
       }
     ], 
     "@babel/preset-typescript",
