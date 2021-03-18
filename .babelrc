@@ -1,6 +1,11 @@
 {
   "plugins": [
-    "@babel/plugin-transform-runtime",
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": 3 // 指定 runtime-corejs 的版本3
+      }
+    ],
     "@babel/plugin-proposal-class-properties",
     ["import", 
       { 
@@ -14,6 +19,7 @@
     [
       "@babel/preset-env", 
       {
+        "useBuiltIns": "usage", // polyfill 按需加载
         "targets": {
           "browsers": ["last 2 versions", "safari >= 7"]
         }
