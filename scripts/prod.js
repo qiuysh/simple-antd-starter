@@ -1,4 +1,4 @@
-const merge = require("webpack-merge");
+const merge = require("webpack-merge").merge;
 const base = require("./base.js");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -33,13 +33,20 @@ module.exports = merge(base, {
       new OptimizeCSSAssetsPlugin({}),
     ],
     splitChunks: {
-      minSize: 30000,
-      maxSize: 3000000,
+      minSize: {
+        javascript: 30000, // 模块要大于30kb才会进行提取
+        style: 50000, // 模块要大于50kb才会进行提取
+      },
+      maxSize:  {
+        javascript: 3000000, //故意写小的效果更明显
+        style: 50000,
+      },
       chunks: "all",
       minChunks: 1,
+      minRemainingSize: 0, 
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
-      name: true,
+      name: false,
       cacheGroups: {
         vendor: {
           name: "vendors",
@@ -55,6 +62,6 @@ module.exports = merge(base, {
       filename: "assets/styles/[name]_[chunkhash:8].css",
     }),
 
-    new webpack.HashedModuleIdsPlugin(), // 实现持久化缓存
+    // new webpack.HashedModuleIdsPlugin(), // 实现持久化缓存
   ],
 });

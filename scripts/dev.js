@@ -1,5 +1,5 @@
 const path = require("path");
-const merge = require("webpack-merge");
+const merge = require("webpack-merge").merge;
 const base = require("./base.js");
 const webpack = require("webpack");
 const apiMocker = require("mocker-api");
@@ -7,7 +7,7 @@ const apiMocker = require("mocker-api");
 module.exports = merge(base, {
   mode: "development",
 
-  devtool: "cheap-module-eval-source-map",
+  devtool: "inline-source-map",
 
   plugins: [
     
@@ -19,7 +19,7 @@ module.exports = merge(base, {
     host: "0.0.0.0",
     port: 3001,
     historyApiFallback: true,
-    open: true,
+    // open: true,
     hot: true,
     inline: true,
     before: function(app) {

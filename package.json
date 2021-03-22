@@ -4,8 +4,8 @@
   "description": "react+ts+react-router+antd+webpack+redux",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && cross-env NODE_ENV=production webpack --display-error-details --progress --profile --colors --config scripts/prod.js",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --progress --colors --config scripts/dev.js",
+    "build": "rimraf dist && cross-env NODE_ENV=production webpack --progress --profile --config scripts/prod.js",
+    "start": "cross-env NODE_ENV=development webpack serve --progress --config scripts/dev.js",
     "lint:test": "eslint src --ext .js,.ts,.tsx",
     "lint:fix": "eslint src --fix --ext .js,.ts,.tsx",
     "prettier": "prettier --write src/*",
@@ -86,7 +86,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "file-loader": "^0.9.0",
     "hard-source-webpack-plugin": "^0.13.1",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.3.1",
     "husky": "^4.3.8",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
@@ -111,10 +111,10 @@
     "typescript": "^3.6.4",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^0.5.7",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.3.1",
-    "webpack-merge": "^4.2.2"
+    "webpack": "^5.26.3",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
   },
   "husky": {
     "hooks": {
@@ -132,5 +132,9 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }

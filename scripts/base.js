@@ -8,6 +8,7 @@ const HardSourceWebpackPlugin = require("hard-source-webpack-plugin")
 const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
+
   entry: {
     app: path.join(__dirname, "../src/app"),
     vendors: ["react", "react-dom", "lodash", "qs"],
@@ -19,6 +20,10 @@ module.exports = {
     filename: devMode ? "[name].bundle.js" : "[name]_[chunkhash:8].js",
     chunkFilename: devMode ? "[id].bundle.js" : "[id].chunk_[chunkhash:8].js",
   },
+
+  // cache: {
+  //   type: "filesystem"
+  // },
 
   module: {
     rules: [
