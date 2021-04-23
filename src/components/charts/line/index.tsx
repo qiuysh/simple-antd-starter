@@ -1,7 +1,19 @@
+/**
+ * /*
+ *
+ * @format
+ * @Author: wulin
+ * @Date: 2021-02-24 15:54:21
+ * @LastEditors: wulin
+ * @LastEditTime: 2021-04-20 18:00:18
+ * @Description: 折线图组件
+ * @FilePath: /react_system/src/components/charts/line/index.tsx
+ */
+
 /** @format */
 
 import React from "react";
-import { Chart, LineAdvance } from "bizcharts";
+import LineChart from "@ant-design/charts/lib/line";
 
 interface iLineProps {
   options: object;
@@ -13,23 +25,12 @@ interface iLineProps {
 
 const Line: React.FC<iLineProps> = props => {
   const { options, data } = props;
-  return (
-    <div>
-      <Chart
-        data={data}
-        height={300}
-        padding="auto"
-        appendPadding={[20, 0, 0, 30]}
-        autoFit>
-        <LineAdvance
-          shape="smooth"
-          point
-          area
-          position="x*y"
-        />
-      </Chart>
-    </div>
-  );
+  const config = {
+    data,
+    xField: "x",
+    yField: "y",
+  };
+  return <LineChart {...config} />;
 };
 
 export default Line;

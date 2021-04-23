@@ -1,11 +1,21 @@
+/**
+ * /*
+ *
+ * @format
+ * @Author: wulin
+ * @Date: 2021-02-24 15:54:21
+ * @LastEditors: wulin
+ * @LastEditTime: 2021-04-23 14:24:46
+ * @Description: 翻牌器组件
+ * @FilePath: /react_system/src/components/charts/flipper/index.tsx
+ */
+
 /** @format */
 
 import React from "react";
 import { Statistic } from "antd";
-import {
-  RiseOutlined,
-  FallOutlined,
-} from "@ant-design/icons";
+import FallOutlined from "@ant-design/icons/FallOutlined";
+import RiseOutlined from "@ant-design/icons/RiseOutlined";
 import "../style.less";
 
 interface iFlipCardProps {

@@ -22,6 +22,11 @@ const { Content } = Layout;
 
 const TITLE: string = "wolin 3C";
 
+const contentStyle: { [key: string]: any } = {
+  margin: "24px 24px 0",
+  minHeight: getViewPortHeight() - 154,
+};
+
 const BaseLayout: React.FC<any> = props => {
   const { children, history, location } = props;
   const [collapsed, changeCollapse] = useState<boolean>(
@@ -65,11 +70,7 @@ const BaseLayout: React.FC<any> = props => {
               collapsed={collapsed}
               changeCollapse={changeCollapse}
             />
-            <Content
-              style={{
-                margin: "24px 24px 0",
-                minHeight: getViewPortHeight() - 154,
-              }}>
+            <Content style={contentStyle}>
               <ErrorBoundary location={location}>
                 {children}
               </ErrorBoundary>

@@ -16,9 +16,7 @@ import Login from "./pages/login";
 const Forms = lazy(() => import("./pages/form"));
 const DashBoard = lazy(() => import("./pages/dashboard"));
 const Tables = lazy(() => import("./pages/table"));
-const PageNotFound = lazy(
-  () => import("./pages/pageNotFound"),
-);
+const Exception = lazy(() => import("./pages/exception"));
 
 const loading: JSX.Element = (
   <div className="page-loading">
@@ -48,7 +46,7 @@ const BasicRouter = (): JSX.Element => (
             <Route
               path="/exception/:code"
               exact
-              component={PageNotFound}
+              component={Exception}
             />
             <Redirect to="/exception/404" />
           </Switch>

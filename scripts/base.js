@@ -10,7 +10,6 @@ const devMode = process.env.NODE_ENV !== "production";
 module.exports = {
   entry: {
     app: path.join(__dirname, "../src/app"),
-    vendors: ["react", "react-dom", "lodash", "qs"],
   },
 
   output: {
@@ -114,12 +113,13 @@ module.exports = {
         "favicon.ico",
       ),
       inject: false,
+      minify: true
     }),
 
-    new MiniCssExtractPlugin({
-      filename: "[name].[chunkhash:8].css",
-      chunkFilename: "[name].[chunkhash:8].css",
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: devMode ? "[name].css" : "[name].[chunkhash:8].css",
+    //   chunkFilename: devMode ? "[name].css" :  "[name].[chunkhash:8].css",
+    // }),
 
     new HardSourceWebpackPlugin(),
   ],

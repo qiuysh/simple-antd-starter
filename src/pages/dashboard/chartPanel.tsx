@@ -24,7 +24,7 @@ type iChartProps = {
   options: {
     title: string;
     isMom?: boolean;
-    [key: string]: any;
+    [key: string]: unknown;
   };
   data: dataArray | dataObject | any;
 };
@@ -53,7 +53,7 @@ function Chart({
   return element;
 }
 
-const RenderChart: React.FC<iChartProps> = params => {
+const ChartPanel: React.FC<iChartProps> = params => {
   const { type, options } = params;
   return (
     <Card title={type != "flipcard" ? options.title : ""}>
@@ -62,4 +62,4 @@ const RenderChart: React.FC<iChartProps> = params => {
   );
 };
 
-export default RenderChart;
+export default ChartPanel;

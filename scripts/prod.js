@@ -1,8 +1,16 @@
+/*
+ * @Author: wulin
+ * @Date: 2021-04-22 19:42:43
+ * @LastEditors: wulin
+ * @LastEditTime: 2021-04-23 17:50:57
+ * @Description: xxxx
+ * @FilePath: /react_system/scripts/prod.js
+ */
 const merge = require("webpack-merge");
 const base = require("./base.js");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const os = require("os");
 
@@ -11,48 +19,55 @@ module.exports = merge(base, {
   optimization: {
     minimizer: [
       // 用于配置 minimizers 和选项
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: os.cpus().length - 1,
-        sourceMap: false, // set to true if you want JS source maps
-        uglifyOptions: {
-          drop_console: true,
-          drop_debugger: true,
-          warnings: false,
-          parse: {},
-          compress: {},
-          mangle: true, // Note `mangle.properties` is `false` by default.
-          output: null,
-          toplevel: false,
-          nameCache: null,
-          ie8: false,
-          keep_fnames: false,
-        },
-      }),
+      // new TerserPlugin({
+      //   // 加快构建速度
+      //   cache: true,
+      //   // 开启多线程
+      //   parallel: os.cpus().length - 1,
+      //   terserOptions: {
+      //     // 打包时将无用代码去除
+      //     compress: {
+      //       unused: true,
+      //       drop_debugger: true,
+      //       drop_console: true,
+      //       dead_code: true
+      //     }
+      //   }
+      // }),
 
       new OptimizeCSSAssetsPlugin({}),
     ],
+    
     splitChunks: {
       minSize: 30000,
-      maxSize: 3000000,
+      maxSize: 500000,
       chunks: "all",
       minChunks: 1,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
       name: true,
       cacheGroups: {
-        vendor: {
+        vendors: {
           name: "vendors",
-          test: "vendors",
-          priority: -1,
+          test: /[\\/]node_modules[\\/](react|react-dom|lodash)[\\/]/,
+          chunks: "all",
         },
+        // default: {
+        //   name: "vendor",
+        //   minChunks: 2,
+        //   priority: -10,
+        //   chunks: 'initial',
+        //   minSize: 50,
+        //   reuseExistingChunk: true
+        // }
       },
     },
   },
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "assets/styles/[name]_[chunkhash:8].css",
+      filename: "[name].[chunkhash:8].css",
+      chunkFilename: "assets/styles/[name]_[chunkhash:8].css"
     }),
 
     new webpack.HashedModuleIdsPlugin(), // 实现持久化缓存

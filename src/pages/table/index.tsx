@@ -27,7 +27,7 @@ interface iDataSourceStats {
   total?: number;
 }
 
-const TableComponent: React.FC<any> = props => {
+const CustemTable: React.FC<any> = props => {
   const [
     reqParams,
     changeParam,
@@ -144,4 +144,4 @@ const TableComponent: React.FC<any> = props => {
   );
 };
 
-export default TableComponent;
+export default CustemTable;
