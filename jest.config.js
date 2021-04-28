@@ -6,12 +6,14 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   snapshotSerializers: ["enzyme-to-json/serializer"],
   transform: {
-    "^.+\\.tsx?$": "./node_modules/babel-jest",
+    "^.+\\.jsx?$": "babel-jest",
+    "^.+\\.tsx?$": "ts-jest",
   },
-  // transformIgnorePatterns: [
-  //   '<rootDir>/dist/', 
-  //   '<rootDir>/.vscode/'
-  // ],
+  transformIgnorePatterns: [
+    '<rootDir>/dist/', 
+    '<rootDir>/.vscode/',
+    '<rootDir>/node_modules/'
+  ],
   moduleNameMapper: {
     '\\.(css|less)$': 'identity-obj-proxy',
     '^@utils(.*)$': '<rootDir>/src/utils$1',

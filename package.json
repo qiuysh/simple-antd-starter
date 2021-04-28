@@ -15,6 +15,11 @@
     "test:coverage": "jest --coverage",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
+  "sideEffects": [
+    "dist/*",
+    "mock/*",
+    "*.less"
+  ],
   "repository": "git+https://github.com/qiuysh/react_system.git",
   "author": "wulin",
   "license": "MIT",
@@ -31,7 +36,7 @@
     "crypto": "^1.0.1",
     "history": "^4.10.1",
     "immutability-helper-x": "^1.0.5",
-    "lodash": "^4.17.11",
+    "lodash-es": "^4.17.21",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "qs": "^6.9.6",
@@ -112,6 +117,7 @@
     "stylelint-config-standard": "^21.0.0",
     "stylelint-order": "^4.1.0",
     "terser-webpack-plugin": "^4.2.3",
+    "ts-jest": "^26.5.5",
     "typescript": "^3.6.4",
     "url-loader": "^0.5.7",
     "webpack": "^4.29.6",

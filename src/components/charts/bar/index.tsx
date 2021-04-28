@@ -5,13 +5,13 @@
  * @Author: wulin
  * @Date: 2021-02-24 15:54:21
  * @LastEditors: wulin
- * @LastEditTime: 2021-04-20 17:58:00
- * @Description: 柱状图组件
+ * @LastEditTime: 2021-04-28 15:16:31
+ * @Description: This is desc
  * @FilePath: /react_system/src/components/charts/bar/index.tsx
  */
 
 /** @format */
-import React from "react";
+import * as React from "react";
 import BarChart from "@ant-design/charts/lib/bar";
 
 interface iBarProps {
