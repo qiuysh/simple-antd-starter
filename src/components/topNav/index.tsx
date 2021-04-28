@@ -2,10 +2,8 @@
 
 import React, { FC } from "react";
 import { Layout } from "antd";
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-} from "@ant-design/icons";
+import MenuFoldOutlined from "@ant-design/icons/MenuFoldOutlined";
+import MenuUnfoldOutlined from "@ant-design/icons/MenuUnfoldOutlined";
 import UseBar from "./useBar";
 import "./style.less";
 

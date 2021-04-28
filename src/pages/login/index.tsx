@@ -8,10 +8,8 @@ import {
   Button,
   message,
 } from "antd";
-import {
-  UserOutlined,
-  LockOutlined,
-} from "@ant-design/icons";
+import UserOutlined from "@ant-design/icons/UserOutlined";
+import LockOutlined from "@ant-design/icons/LockOutlined";
 import * as ajax from "./services";
 import "./login.less";
 

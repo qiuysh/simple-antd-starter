@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { lazy, Suspense } from "react";
-import { LoadingOutlined } from "@ant-design/icons";
+import LoadingOutlined from "@ant-design/icons/LoadingOutlined";
 import {
   BrowserRouter as Router,
   Route,

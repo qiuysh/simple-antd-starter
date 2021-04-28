@@ -9,7 +9,7 @@
  */
 import React from "react";
 import { Result } from "antd";
-import isEqual from "lodash/isEqual";
+import { isEqual } from "lodash-es";
 
 interface IStates {
   hasError: boolean;
@@ -42,7 +42,7 @@ export default class ErrorBoundary extends React.Component<
 
   // componentDidCatch(error: unknown, errorInfo: unknown) {
   // 你同样可以将错误日志上报给服务器
-  // console.log(error, errorInfo);
+  //   console.log(error, errorInfo);
   // }
 
   render() {

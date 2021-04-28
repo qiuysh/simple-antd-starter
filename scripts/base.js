@@ -16,7 +16,7 @@ module.exports = {
     path: path.join(__dirname, "../dist"),
     publicPath: "/",
     filename: devMode ? "[name].bundle.js" : "[name]_[chunkhash:8].js",
-    chunkFilename: devMode ? "[id].bundle.js" : "[id].chunk_[chunkhash:8].js",
+    chunkFilename: devMode ? "[name].bundle.js" : "[name].chunk_[chunkhash:8].js",
   },
 
   module: {

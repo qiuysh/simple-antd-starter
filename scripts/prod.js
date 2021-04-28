@@ -2,7 +2,7 @@
  * @Author: wulin
  * @Date: 2021-04-22 19:42:43
  * @LastEditors: wulin
- * @LastEditTime: 2021-04-23 17:50:57
+ * @LastEditTime: 2021-04-27 17:11:38
  * @Description: xxxx
  * @FilePath: /react_system/scripts/prod.js
  */
@@ -15,7 +15,11 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const os = require("os");
 
 module.exports = merge(base, {
+
   mode: "production",
+
+  // devtool: "cheap-module-source-map",
+  
   optimization: {
     minimizer: [
       // 用于配置 minimizers 和选项
@@ -40,26 +44,18 @@ module.exports = merge(base, {
     
     splitChunks: {
       minSize: 30000,
-      maxSize: 500000,
+      maxSize: 900000,
       chunks: "all",
       minChunks: 1,
-      maxAsyncRequests: 5,
+      maxAsyncRequests: 6,
       maxInitialRequests: 3,
       name: true,
       cacheGroups: {
         vendors: {
           name: "vendors",
-          test: /[\\/]node_modules[\\/](react|react-dom|lodash)[\\/]/,
+          test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
           chunks: "all",
-        },
-        // default: {
-        //   name: "vendor",
-        //   minChunks: 2,
-        //   priority: -10,
-        //   chunks: 'initial',
-        //   minSize: 50,
-        //   reuseExistingChunk: true
-        // }
+        }
       },
     },
   },

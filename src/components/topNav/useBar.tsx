@@ -2,10 +2,8 @@
 
 import React, { FC } from "react";
 import { Modal, Avatar, Menu, Switch } from "antd";
-import {
-  BellOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import BellOutlined from "@ant-design/icons/BellOutlined";
+import UserOutlined from "@ant-design/icons/UserOutlined";
 import "./style.less";
 
 const { confirm } = Modal;
