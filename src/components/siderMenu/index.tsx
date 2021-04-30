@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, FC } from "react";
+import * as React from "react";
 import { Menu, Layout } from "antd";
 import CustomIcon from "@components/customIcon";
 import Logo from "../logo";
@@ -10,7 +10,7 @@ const { Sider } = Layout;
 interface iProps {
   history: any;
   collapsed: boolean;
-  menuList: Array<{ [key: string]: any }>;
+  menuList: Array<iMenuProps>;
 }
 
 interface iMenuProps {
@@ -20,28 +20,25 @@ interface iMenuProps {
   icon: string;
   url: string;
   code: string;
-  [key: string]: any;
+  desc: string | null;
+  create_time: string;
+  modified_time: string | null;
 }
 
-const SiderMenu: FC<iProps> = props => {
+const SiderMenu: React.FC<iProps> = props => {
   const { history, collapsed, menuList } = props;
   const { location, push } = history;
   const { pathname } = location;
-  const [activeKey, setActive] = React.useState<
-    string | null
-  >();
+  const [activeKey, setActive] = React.useState<string>("");
 
-  useEffect(() => {
+  React.useEffect(() => {
     initialActiveKey();
   }, []);
 
   // 初始化
   const initialActiveKey = (): void => {
     if (menuList && menuList.length) {
-      const firstActiveMenu:
-        | iMenuProps
-        | undefined
-        | object =
+      const firstActiveMenu: iMenuProps | { code: string } =
         pathname === "/"
           ? menuList[0]
           : {
@@ -53,12 +50,9 @@ const SiderMenu: FC<iProps> = props => {
 
   const handleClick = (e: any): void => {
     const { key } = e;
-    const targetMenu:
-      | iMenuProps
-      | undefined = menuList.find(
-      (o: any) => key === o.code,
-    );
-    if (targetMenu) {
+    const targetMenu: iMenuProps | null =
+      menuList.find((o: any) => key === o.code) || null;
+    if (targetMenu && targetMenu.url) {
       setActive(key);
       push(targetMenu.url);
     }

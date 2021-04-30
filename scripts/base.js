@@ -15,7 +15,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "../dist"),
     publicPath: "/",
-    filename: devMode ? "[name].bundle.js" : "[name]_[chunkhash:8].js",
+    filename: devMode ? "[name].bundle.js" : "[name].[chunkhash:8].js",
     chunkFilename: devMode ? "[name].bundle.js" : "[name].chunk_[chunkhash:8].js",
   },
 
@@ -35,6 +35,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        include: path.join(__dirname, "../src"),
         use: [
           devMode
             ? "style-loader"
@@ -45,6 +46,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
+        exclude: /node_modules\/(!antd)/,
         use: [
           devMode
             ? "style-loader"
@@ -62,9 +64,42 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)(\?[tv]=[\d.]+)*$/,
-        exclude: /node_modules/,
+        include: path.join(__dirname, "../src"),
         use: [
-          "file-loader?name=assets/images/[name].[ext]",
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "assets/images",
+            }
+          },
+          {
+            loader: "image-webpack-loader",
+            options: {
+              // 压缩 jpeg 的配置
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              // 使用 imagemin**-optipng 压缩 png，enable: false 为关闭
+              optipng: {
+                enabled: false,
+              },
+              // 使用 imagemin-pngquant 压缩 png
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              // 压缩 gif 的配置
+              gifsicle: {
+                interlaced: false,
+              },
+              // 开启 webp，会把 jpg 和 png 图片压缩为 webp 格式
+              webp: {
+                quality: 75
+              }
+            }
+          }
         ],
       },
       {
@@ -116,11 +151,6 @@ module.exports = {
       minify: true
     }),
 
-    // new MiniCssExtractPlugin({
-    //   filename: devMode ? "[name].css" : "[name].[chunkhash:8].css",
-    //   chunkFilename: devMode ? "[name].css" :  "[name].[chunkhash:8].css",
-    // }),
-
     new HardSourceWebpackPlugin(),
   ],
 
@@ -131,6 +161,7 @@ module.exports = {
       "@components": path.join(__dirname, "../src/components"),
       "@pages": path.join(__dirname, "../src/pages"),
       "@utils": path.join(__dirname, "../src/utils"),
+      "@assets": path.join(__dirname, "../src/assets"),
     },
   },
 };

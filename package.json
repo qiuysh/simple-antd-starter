@@ -10,9 +10,9 @@
     "stylelint:test": "stylelint src --fix .less,.css",
     "lint:fix": "eslint src --fix --ext .js,.ts,.tsx",
     "prettier": "prettier --write src/*",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test": "BABEL_ENV=test jest",
+    "test:watch": "BABEL_ENV=test jest --watch",
+    "test:coverage": "BABEL_ENV=test jest --coverage",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "sideEffects": [
@@ -70,6 +70,7 @@
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "babel-plugin-import": "^1.12.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "body-parser": "^1.15.2",
     "cross-env": "^6.0.3",
     "css-loader": "^3.6.0",
@@ -94,6 +95,7 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.3.8",
     "identity-obj-proxy": "^3.0.0",
+    "image-webpack-loader": "^7.0.1",
     "jest": "^26.6.3",
     "jest-canvas-mock": "^2.3.1",
     "json-loader": "^0.5.7",

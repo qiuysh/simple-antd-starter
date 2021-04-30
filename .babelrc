@@ -24,6 +24,7 @@
       "@babel/preset-env", 
       {
         "targets": {
+          // "node": "current",
           "browsers": ["last 2 versions", "safari >= 7"]
         },
         "modules": false
@@ -31,5 +32,14 @@
     ], 
     "@babel/preset-typescript",
     "@babel/preset-react"
-  ]
+  ],
+
+  // 测试
+  "env": {
+    "test": {
+      "plugins": [
+        "transform-es2015-modules-commonjs"
+      ]
+    }
+  }
 }

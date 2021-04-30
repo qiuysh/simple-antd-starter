@@ -1,12 +1,4 @@
 /** @format */
-/**
- * @description 错误边界捕捉组件
- * @author wulin
- * @date 2020-12-24
- * @export
- * @class ErrorBoundary
- * @extends {React.Component<any>}
- */
 import React from "react";
 import { Result } from "antd";
 import { isEqual } from "lodash-es";

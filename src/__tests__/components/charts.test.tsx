@@ -1,15 +1,3 @@
-/**
- * /*
- *
- * @format
- * @Author: wulin
- * @Date: 2021-02-24 15:54:21
- * @LastEditors: wulin
- * @LastEditTime: 2021-04-28 15:15:42
- * @Description: This is desc
- * @FilePath: /react_system/src/__tests__/components/charts.test.tsx
- */
-
 /** @format */
 import * as React from "react";
 import { shallow } from "enzyme";

@@ -56,7 +56,7 @@ const DashBoard: React.FC<any> = props => {
   };
 
   return (
-    <div>
+    <>
       <Row gutter={20}>
         <Col span={6}>
           <ChartPanel
@@ -117,7 +117,7 @@ const DashBoard: React.FC<any> = props => {
           />
         </Col>
       </Row>
-    </div>
+    </>
   );
 };
 

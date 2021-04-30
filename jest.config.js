@@ -12,7 +12,7 @@ module.exports = {
   transformIgnorePatterns: [
     '<rootDir>/dist/', 
     '<rootDir>/.vscode/',
-    '<rootDir>/node_modules/'
+    '<rootDir>/node_modules/(?!(lodash-es|other-es-lib))',
   ],
   moduleNameMapper: {
     '\\.(css|less)$': 'identity-obj-proxy',
@@ -20,8 +20,9 @@ module.exports = {
     '^@assets(.*)$': '<rootDir>/src/assets$1',
     '^@components(.*)$': '<rootDir>/src/components$1',
     '^@pages(.*)$': '<rootDir>/src/pages$1',
+    '@assets/fonts/iconfont': '',
   },
-  // testPathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/', '<rootDir>/.vscode/'], //转换时需忽略的文件
+  testPathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/', '<rootDir>/.vscode/'], //转换时需忽略的文件
   collectCoverageFrom: ['<rootDir>/src/**/*.{tsx,ts,js}'], // 哪些文件需要收集覆盖率信息
   coverageDirectory: '<rootDir>/.coverage', // 输出覆盖信息文件的目录
   coveragePathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/', '<rootDir>/.vscode/'],

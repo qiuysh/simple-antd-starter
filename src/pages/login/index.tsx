@@ -19,6 +19,7 @@ type ILoginProps = {
 
 const Login: React.FC<ILoginProps> = props => {
   const { history } = props;
+
   function handleSubmit(value: any): void {
     ajax.login(value).then((res: any) => {
       const isLoginSuccess: Boolean = res.result;
