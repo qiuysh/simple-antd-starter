@@ -39,11 +39,11 @@ const BaseLayout: React.FC<any> = props => {
   const { menuList } = state as GLOBAL.storeProps;
 
   useEffect(() => {
-    QueryMenu();
+    queryMenu();
   }, []);
 
   // 获取导航菜单列表
-  const QueryMenu = async () => {
+  const queryMenu = async () => {
     const res: any = await ajax.getNavigation();
     if (res.result) {
       dispatch({
