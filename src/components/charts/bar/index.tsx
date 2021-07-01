@@ -2,7 +2,7 @@
 import * as React from "react";
 import BarChart from "@ant-design/charts/lib/bar";
 
-interface iBarProps {
+export interface iBarProps {
   options: object;
   data: Array<{
     x: string;

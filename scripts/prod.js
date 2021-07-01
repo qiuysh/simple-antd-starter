@@ -13,6 +13,7 @@ module.exports = merge(base, {
   // devtool: "cheap-module-source-map",
   
   optimization: {
+    // runtimeChunk: true,
     minimizer: [
       // 用于配置 minimizers 和选项
       new TerserPlugin({
@@ -44,8 +45,8 @@ module.exports = merge(base, {
     
     splitChunks: {
       minSize: 30000,
-      // maxSize: 900000,
-      chunks: "initial",
+      maxSize: 900000,
+      chunks: "all",
       minChunks: 1,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
@@ -56,12 +57,22 @@ module.exports = merge(base, {
           test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
           chunks: "all",
           priority: 10,
+          enforce: true,
+        },
+        default: {
+          name: 'vendors-ui', // 打包后的文件名
+          test: /[\\/]node_modules[\\/](antd)[\\/]/,
+          chunks: 'initial',
+          priority: 20,
+          enforce: true,
+          reuseExistingChunk: true
         },
         common: {
-          name: 'common', // 打包后的文件名
+          name: 'chunk-common',
           chunks: 'initial',
-          priority: 2,
+          priority: -2,
           minChunks: 2, // 重复2次才能打包到此模块
+          enforce: true,
           reuseExistingChunk: true
         },
       },

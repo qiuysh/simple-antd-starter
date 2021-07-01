@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { FC } from "react";
+import * as React from "react";
 import { Modal, Avatar, Menu, Switch } from "antd";
 import BellOutlined from "@ant-design/icons/BellOutlined";
 import UserOutlined from "@ant-design/icons/UserOutlined";
@@ -8,7 +8,7 @@ import "./style.less";
 
 const { confirm } = Modal;
 
-const UseBar: FC<{}> = () => {
+const UseBar: React.FC<{}> = () => {
   return (
     <Menu className="yux-usebar f-fr">
       <Menu.Item>

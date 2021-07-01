@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { FC } from "react";
+import * as React from "react";
 import { Layout } from "antd";
 import MenuFoldOutlined from "@ant-design/icons/MenuFoldOutlined";
 import MenuUnfoldOutlined from "@ant-design/icons/MenuUnfoldOutlined";
@@ -14,18 +14,19 @@ interface iProps {
   changeCollapse: (collapsed: boolean) => void;
 }
 
-const TopNav: FC<iProps> = props => {
+const TopNav: React.FC<iProps> = props => {
   const { collapsed = false, changeCollapse } = props;
+  const trigger = collapsed ? (
+    <MenuFoldOutlined />
+  ) : (
+    <MenuUnfoldOutlined />
+  );
   return (
     <Header className="yux-header">
       <a
         className="trigger"
         onClick={() => changeCollapse(!collapsed)}>
-        {collapsed ? (
-          <MenuFoldOutlined />
-        ) : (
-          <MenuUnfoldOutlined />
-        )}
+        {trigger}
       </a>
       <UseBar />
     </Header>

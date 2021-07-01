@@ -3,7 +3,7 @@
 import React from "react";
 import LineChart from "@ant-design/charts/lib/line";
 
-interface iLineProps {
+export interface iLineProps {
   options: object;
   data: Array<{
     x: string;

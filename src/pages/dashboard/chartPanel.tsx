@@ -14,7 +14,7 @@ type dataArray = {
 type dataObject = {
   data: {
     value: number;
-    prefix?: string;
+    prefix?: string | null;
     suffix?: string;
   };
 };

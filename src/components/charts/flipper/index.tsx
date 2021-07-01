@@ -5,7 +5,7 @@ import FallOutlined from "@ant-design/icons/FallOutlined";
 import RiseOutlined from "@ant-design/icons/RiseOutlined";
 import "../style.less";
 
-interface iFlipCardProps {
+export interface iFlipCardProps {
   options: {
     title: string;
     precision?: number;
@@ -24,8 +24,11 @@ const FlipCard: React.FC<iFlipCardProps> = props => {
   const { title, precision, isMom } = options;
   const { value, prefix, suffix } = data;
   let color: string = "#333";
+  let prefixContent: React.ReactNode;
   if (isMom) {
     color = prefix === "up" ? "#cf1322" : "#3f8600";
+    prefixContent =
+      prefix === "up" ? <RiseOutlined /> : <FallOutlined />;
   }
   return (
     <div className="flip-chart">
@@ -36,17 +39,7 @@ const FlipCard: React.FC<iFlipCardProps> = props => {
         valueStyle={{
           color,
         }}
-        prefix={
-          isMom ? (
-            prefix === "up" ? (
-              <RiseOutlined />
-            ) : (
-              <FallOutlined />
-            )
-          ) : (
-            prefix
-          )
-        }
+        prefix={isMom ? prefixContent : prefix}
         suffix={suffix || "%"}
       />
     </div>

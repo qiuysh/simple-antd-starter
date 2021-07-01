@@ -1,5 +1,5 @@
 /** @format */
-import React from "react";
+import * as React from "react";
 import { Result } from "antd";
 import { isEqual } from "lodash-es";
 
